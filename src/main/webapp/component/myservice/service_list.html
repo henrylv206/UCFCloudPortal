@@ -1,0 +1,84 @@
+    <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+    <input type="hidden" id="basePath" value="<%=request.getContextPath() %>"/>   
+     <input type="hidden" id="serviceId" />
+  <div class="sCont">
+    <div class="breadcrumbs" id="currTitle"><span>我的服务</span></div>
+    <div class="sShop">
+    <table class="shophead" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="line3">服务名称：</td>
+        <td><input type="text" class="inpText1"  id="serviceName"  value=""/></td>
+        <td class="line1">&nbsp;</td>
+        <td class="line3">服务类型：</td>
+        <td>
+            <select id="typeId" style="display:none" name="typeId" width="150">
+            </select>
+        </td>
+        <td class="line1"></td>
+        <td class="line3">服务状态：</td>
+        <td>
+	        <select id="state" style="display:none" name="state" width="100">
+	                <option value="" >全部</option>
+	                <option value="1" >申请开通</option>
+	                <option value="3" >正在开通</option>
+	                <option value="2" >可用</option>
+                    <option value="5" >申请退订</option>
+                    <option value="6" >正在退订</option>
+                    <option value="7" >不可用</option>
+                    <option value="4" >作废</option>
+	        </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="line3">创建时间：</td>
+        <td><input type="text" class="inpText1  query-pull i-date"  id="start" /></td>
+        <td class="line1">至</td>
+        <td colspan="2"><input type="text" class="inpText1  query-pull i-date"  id="end" /></td>
+        <td class="line1">&nbsp;</td>
+        <td class="line3">&nbsp;</td>
+        <td><input type="button" value="查询" class="btnCss01 fr"  onclick="closSelect();queryByOption(1)" /></td>
+      </tr>
+    </table>
+    </div>
+    <div class="tblWrap">
+      <table class="listTbl">
+        <thead>
+          <tr>
+            <th width='6%' class="number">编号</th><!-- bug 0003477,3861-->
+            <th width='17%'>服务名称</th>
+            <th width='10%'>服务类型</th>
+            <th width='27%'>服务描述</th>
+            <th width='10%'>创建时间</th>
+            <th width='10%'>过期时间</th>
+            <th width='10%'>服务状态</th>
+            <th width='10%' >操作</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td colspan="8">
+				<input type="hidden" id="curPage" value="1" />
+          		<input type="hidden" id="pageSize" value="10" />
+          		<input type="hidden" id="total" value="1" />
+              <ul class="paging">
+                <li>
+	                <a href="javascript:turnPage(-1, 0)"><img src="../images/icons/icon-p-first.gif" /></a>
+	                <a href="javascript:turnPage(-1, 1)"><img src="../images/icons/icon-p-prev.gif" /></a>
+	                <span id="pageInfo"></span>
+	                <a href="javascript:turnPage(1, 1)"><img src="../images/icons/icon-p-next.gif" /></a>
+	                <a href="javascript:turnPage(1, 0)"><img src="../images/icons/icon-p-last.gif" /></a>
+                </li>
+                <li>
+                	第<input type="text" id="page_specified" class="text" value="1"/>页
+                	<input type="button" value="GO" class="but"  onclick="turnSpecified()"/>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tfoot>
+        <tbody id="service_tbody">
+        </tbody>
+      </table>
+    </div>
+    <!--end tblWrap-->
+  </div>

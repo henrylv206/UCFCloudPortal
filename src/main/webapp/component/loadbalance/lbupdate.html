@@ -1,0 +1,29 @@
+  <div class="topic">
+    <h4><img src="../images/icons/icon-popup-01.png" /><span id="popTitle"></span></h4>
+  </div>
+  <div class="cont">
+    <table class="poopupTbl vm">
+      <tbody> 
+      	<tr id="machineTypeForNas">
+         <td class="name" id="cz">机器类型:</td>
+         <td><select name="machineTypeS" id="machineTypeS"><option id="1">虚拟机</option><option id="2">小型机</option><option id="3">物理机</option></select></td>
+        </tr>        
+        <tr>
+          <td class="name">主机：</td>
+          <td><select class="Txtle vmList" id="uvmList" width="126"></select><!-- <span class="red">*</span> --></td>
+        </tr>
+        <tr>
+          <td class="name">端口：</td>
+          <td><a class="Txtle"><input type="text" class="Txtri line11" id="lbPort" /></a><!--<span class="red">*</span> --></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="shopArea2">
+      <input type="hidden" id="serviceGroupName"/>	
+      <input type="hidden" id="lbProtocol"/>
+      <input type="hidden" id="lbPolicy"/>
+      <input type="hidden" id="vm_conn" value="1000"/>
+      <input type="button" value="确认" class="popupBtn02" id="vm_btn" onclick="lbmanage.addLoadBalaAboutVM();"/>
+      <input type="button" value="取消" class="popupBtn02" id="close" />
+    </div>
+  </div>

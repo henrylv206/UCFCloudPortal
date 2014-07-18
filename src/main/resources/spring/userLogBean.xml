@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <!--系统管理： 用户操作日志 -->
+  <bean id="userLogDao" class="com.skycloud.management.portal.front.log.dao.impl.UserLogDaoImpl">
+	<property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <bean id="userLogService" class="com.skycloud.management.portal.front.log.service.impl.UserLogServiceImpl">
+    <property name="userLogDao" ref="userLogDao" />
+    <property name="parametersDao" ref="parametersDao" />
+    <property name="configDao" ref="userLogConfigDao" />
+		<property name="mailContent">
+			<value>${mail.log.content}</value>
+		</property>
+  </bean>
+  <bean id="logAspect" class="com.skycloud.management.portal.front.log.aop.LogAspect">
+    <property name="userLogService" ref="userLogService" />
+  </bean>
+  <bean id="userLogAction" class="com.skycloud.management.portal.front.log.action.UserLogAction" scope="prototype">
+    <property name="userLogService" ref="userLogService" />
+  </bean>
+  
+  <!--系统管理： 用户日志配置 -->
+  <bean id="userLogConfigDao" class="com.skycloud.management.portal.front.log.dao.impl.UserLogConfigDaoImpl">
+	<property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <!-- <bean id="logConfigService" class="com.skycloud.management.portal.front.log.service.impl.LogConfigServiceImpl">
+    <property name="configDao" ref="userLogConfigDao" />
+  </bean> -->
+  <!-- <bean id="logConfigAction" class="com.skycloud.management.portal.front.log.action.LogConfigAction" scope="prototype">
+    <property name="logConfigService" ref="logConfigService" />
+  </bean> -->
+  
+  <!-- 系统管理：公网ip -->
+   <bean id="publicIPDao" class="com.skycloud.management.portal.admin.sysmanage.dao.impl.PublicIPDaoImpl">
+	<property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <bean id="publicIPService" class="com.skycloud.management.portal.admin.sysmanage.service.impl.PublicIpServiceImpl">
+	<property name="publicIPDao" ref="publicIPDao" />
+  </bean>
+    
+</beans>
+

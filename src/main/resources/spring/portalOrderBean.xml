@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <bean id="orderDao" class="com.skycloud.management.portal.front.order.dao.impl.OrderDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+    <property name="orderHistoryService" ref="orderHistoryService" />
+  </bean>
+   <bean id="instanceInfoDao"
+		class="com.skycloud.management.portal.front.order.dao.impl.InstanceInfoDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+   </bean>
+   <!-- 网卡信息 -->
+   <bean id="nicsDao"
+		class="com.skycloud.management.portal.front.order.dao.impl.NicsDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+   </bean>
+   <bean id="nicsService"
+		class="com.skycloud.management.portal.front.order.service.impl.NicsServiceImpl">
+		<property name="nicsDao" ref="nicsDao" />
+		<property name="cloudAPIService" ref="cloudAPIService" />
+		<property name="userVlanDao" ref="userVlanDao"/>
+		<property name="instanceInfoDao" ref="instanceInfoDao"/>
+   </bean>
+   <!-- elaster API -->
+   <bean id="cloudAPIService" class="com.skycloud.management.portal.front.order.service.impl.CloudAPIServiceImpl">
+     <property name="commandService" ref="commandService" />
+     <property name="resourcePoolsDao" ref="resourcePoolsDao" />
+   </bean>
+   <bean id="orderService" class="com.skycloud.management.portal.front.order.service.impl.OrderServiceImpl">
+     <property name="orderDao" ref="orderDao" />
+     <property name="instanceInfoDao" ref="instanceInfoDao" />
+     <property name="nicsDao" ref="nicsDao" />
+     <property name="asyncJobDao" ref="asyncJobDao" />
+     <property name="parametersDao" ref="parametersDao" />
+     <property name="cloudAPIService" ref="cloudAPIService" />
+     <property name="auditDao" ref="auditDao" />
+     <property name="resouceServiceInstanceOperateDao" ref="resouceServiceInstanceOperateDao" />
+     <property name="asyncJobVDCService" ref="asyncJobVDCService" />
+     <property name="productInstanceRefService" ref="productInstanceRefService" />
+     <property name="orderHistoryDao" ref="orderHistoryDao" />
+     <property name="serviceInstanceService" ref="serviceInstanceService" />
+     <property name="productService" ref="productService" />
+     <property name="VMTemplateService" ref="VMTemplateService" />
+     <property name="MCTemplateService" ref="MCTemplateService" />
+     <property name="physicalMachineService" ref="physicalMachineService"></property>
+   </bean>
+   <bean id="orderAction" class="com.skycloud.management.portal.front.order.action.OrderAction"  scope="prototype">
+      <property name="orderService" ref="orderService" />
+      <property name="VMTemplateService" ref="VMTemplateService" />
+      <property name="MCTemplateService" ref="MCTemplateService" />
+      <property name="cloudAPIService" ref="cloudAPIService" />
+      <property name="auditService" ref="auditService" />
+      <property name="publicIPService" ref="publicIPService" />
+      <property name="instanceService" ref="instanceService" />
+      <property name="commandService" ref="commandService" />
+      <property name="jobInstanceInfoService" ref="jobInstanceService" />
+      <property name="productService" ref="productService" />
+       <property name="nicsService" ref="nicsService" />
+       <property name="serviceInstanceService" ref="serviceInstanceService" />  
+       <property name="physicalMachineService" ref="physicalMachineService" />    
+       <property name="firewallService" ref="firewallService_portal" />
+       <!-- <property name="loadbalanceH3Cservice" ref="loadbalanceH3Cservice" />   -->
+       <property name="vmModifyService" ref="vmModifyService" />          
+       <property name="nasResourceService" ref="nasResourceService" />        
+   </bean>
+      
+   <!-- 服务实例 paas -->
+    <bean id="productInstanceRefDao"
+		class="com.skycloud.management.portal.front.order.dao.impl.ProductInstanceRefDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+   </bean>
+    <bean id="productInstanceRefService" class="com.skycloud.management.portal.front.order.service.impl.ProductInstanceRefServiceImpl">
+     <property name="productInstanceRefDao" ref="productInstanceRefDao" />
+   </bean>
+   
+    <!-- 历史订单 -->
+    <bean id="orderHistoryDao"
+		class="com.skycloud.management.portal.front.order.dao.impl.OrderHistoryDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+   </bean>
+    <bean id="orderHistoryService"
+		class="com.skycloud.management.portal.front.order.service.impl.OrderHistoryServiceImpl">
+		 <property name="orderHistoryDao" ref="orderHistoryDao" />
+         <property name="instanceInfoDao" ref="instanceInfoDao" />
+         <property name="VMTemplateService" ref="VMTemplateService" />
+         <property name="MCTemplateService" ref="MCTemplateService" />
+   </bean>
+   
+   <!-- 产品续订和到期自动退订 -->
+   <bean id="instancePeriodManageDao" class="com.skycloud.management.portal.front.instance.dao.impl.InstancePeriodManageDaoImpl">
+     <property name="jdbcTemplate" ref="jdbcTemplate" />
+   </bean>
+   <bean id="instancePeriodManageService" class="com.skycloud.management.portal.front.instance.service.impl.InstancePeriodManageServiceImpl">
+    <property name="instancePeriodManageDao" ref="instancePeriodManageDao" />
+    <property name="jobInstanceDao" ref="jobInstanceDao" />
+    <property name="vmModifyService" ref="vmModifyService" />
+    <property name="publicIPService" ref="publicIpInstanceService" />
+    <property name="asyncJobVDCService" ref="asyncJobVDCService" />
+    <property name="bandWidthService" ref="bandWidthInstanceOperateService" />
+    <property name="SGRuleService" ref="SGRuleService" />
+    <property name="instanceService" ref="instanceService" />
+    <property name="instanceInfoDao" ref="instanceInfoDao" />
+    <property name="orderDao" ref="orderDao" />
+    <property name="auditService" ref="auditService" />
+    <property name="serviceInstanceService" ref="serviceInstanceService" />
+    <property name="jobInstanceService" ref="jobInstanceService" />
+   </bean>
+   <bean id="instancePeriodManageAction" class="com.skycloud.management.portal.front.instance.action.InstancePeriodManageAction">
+     <property name="instancePeriodManageService" ref="instancePeriodManageService" />
+   </bean>
+   
+</beans>

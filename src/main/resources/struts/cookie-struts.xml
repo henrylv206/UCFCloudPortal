@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="cookie" namespace="/cookie" extends="default1">
+
+		<action name="put" class="cookieAction" method="saveOrUpdateCookie">
+			<result name="success" type="json">
+				<param name="root">state</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">state</param>
+			</result>
+		</action>
+		
+		<action name="get" class="cookieAction" method="getCookieByKey">
+			<result type="json">
+			 <param name="root">cookie</param>
+			<param name="includeProperties">
+				COOKIE_VALUE
+			</param>
+			</result>
+		</action>
+		
+		<action name="delete" class="cookieAction" method="deleteCookieByKey">
+			<result type="json">
+			 <param name="root">state</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

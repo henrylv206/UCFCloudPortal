@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <bean id="vdcVisualMachineAction" class="com.skycloud.management.portal.front.vm.action.VMManageAction" scope="prototype">
+    
+    <property name="instanceService" ref="instanceService" />
+    <property name="vmTemplateListService" ref="vmTemplateListService" />
+    <property name="vmListService" ref="vmListService" />
+    <property name="productService" ref="productService" />
+    <property name="userVlanService" ref="userVlanService" /> 
+  </bean>
+  <bean id="vmsManageAction" class="com.skycloud.management.portal.front.vm.action.VMSManageAction" scope="prototype">
+  	
+   	  <property name="productService" ref="productService" />        
+  </bean>
+</beans>

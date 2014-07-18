@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <bean id="productDao" class="com.skycloud.management.portal.admin.resmanage.dao.impl.ProductDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  
+  <bean id="productTemplateRelationDao" class="com.skycloud.management.portal.admin.resmanage.dao.impl.ProductTemplateRelationDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  
+  <bean id="productService" class="com.skycloud.management.portal.admin.resmanage.service.impl.ProductServiceImpl">
+    <property name="productDao" ref="productDao" />
+    <property name="productTemplateRelationDao" ref="productTemplateRelationDao" />
+    <property name="VMTemplateDao" ref="VMTemplateDao" />   
+    <property name="VMTemplateService" ref="VMTemplateService" />
+    <property name="MCTemplateService" ref="MCTemplateService" />
+    <!-- 多定价模式支持 added by 何军辉 20130311 -->
+    <property name="productChargeUnitDao" ref="productChargeUnitDao" />
+    <property name="chargeUnitDao" ref="chargeUnitDao" />
+    <!-- added by 何军辉 20130311 -->
+  </bean>
+  
+    <!-- 多定价模式支持 added by 何军辉 20130310 -->
+  <bean id="productChargeUnitDao" class="com.skycloud.management.portal.admin.resmanage.dao.impl.ProductChargeUnitDaoImpl" scope="prototype">
+  	<property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  	<bean id="chargeUnitDao" class="com.skycloud.management.portal.admin.resmanage.dao.impl.ChargeUnitDaoImpl" scope="prototype">
+  	<property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <!-- added by 何军辉 20130310 -->
+</beans>

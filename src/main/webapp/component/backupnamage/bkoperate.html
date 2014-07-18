@@ -1,0 +1,26 @@
+  <div class="topic">
+    <h4><img src="../images/icons/icon-popup-01.png" /><span id="poptitle"></span></h4><!-- fix 0003677 -->
+  </div>
+  <div class="cont" id="confirm">
+    <table class="poopupTbl">
+      <tbody>   
+        <tr id="tr_storage">
+          <td class="name">空间大小：</td>
+          <td><select  name="storageSize" id="storageSize"></select></td>
+        </tr>
+	    <tr>
+	      <td class="name">申请理由：</td>
+	      <td >
+	        <textarea id="reason" style="height:60px; font-size:12px;margin-right:10px;margin-top:10px;"></textarea>
+	      </td>
+	    </tr>
+      </tbody>
+    </table>
+    <div class="shopArea2">
+      <input type="button" value="确认" class="popupBtn02" id="bk_btn"/>
+      <input type="button" value="取消" class="popupBtn02" id="close" />
+        <input type="hidden" id="instanceId" />
+        <input type="hidden" id="operType" />
+        <input type="hidden" id="curSize" />   
+    </div>
+  </div>

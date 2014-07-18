@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="log" namespace="/log" extends="default">
+		  
+		<action name="queryCurrentUserLog" class="userLogAction" method="queryCurrentUserLog">
+			<result type="json" name="success">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">
+				   listResp\.list\[\d+\]\.id,
+	               listResp\.list\[\d+\]\.createDtString,
+	               listResp\.list\[\d+\]\.moduleName,
+	               listResp\.list\[\d+\]\.ip,
+	               listResp\.list\[\d+\]\.functionName,
+	               listResp\.list\[\d+\]\.comment,
+	               listResp\.list\[\d+\]\.parameters,
+	               listResp\.page,
+	               listResp\.size,
+	               listResp\.total,
+				</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">returnJson</param>
+			</result>		
+		</action>
+		
+		  
+	</package>
+	
+	<package name="publicIp" namespace="/publicIp" extends="default">
+		
+	</package>
+	<!-- 日志报警 -->
+	<package name="logWarn" namespace="/logWarn" extends="default">
+		
+	</package>
+	<!-- 日志配置 -->
+	<package name="logConfig" namespace="/logConfig" extends="default">
+		
+	</package>
+</struts>
+

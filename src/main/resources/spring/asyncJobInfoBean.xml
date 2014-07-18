@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <bean id="asyncJobService" class="com.skycloud.management.portal.front.instance.service.impl.AsyncJobServiceImpl">
+    <property name="asyncJobDao" ref="asyncJobDao" />
+    <property name="parametersService" ref="parametersService" />
+
+  </bean>
+  <bean id="asyncJobInfoErrorService" class="com.skycloud.management.portal.front.instance.service.impl.AsyncJobInfoErrorService">
+    <property name="asyncJobInfoErrorDao" ref="asyncJobInfoErrorDao" />
+  </bean>
+  <bean id="taskService" class="com.skycloud.management.portal.front.task.service.impl.TaskService">
+    <property name="asyncJobInfoErrorService" ref="asyncJobInfoErrorService" />
+    <property name="asyncJobService" ref="asyncJobService" />
+    <property name="commandService" ref="commandService" />
+    <property name="instanceService" ref="instanceService" />
+    <property name="volumeHistoryDao" ref="volumeHistoryDao" />
+  </bean>
+  <bean id="asyncJobDao" class="com.skycloud.management.portal.front.instance.dao.impl.AsyncJobInfoDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <bean id="asyncJobInfoErrorDao" class="com.skycloud.management.portal.front.instance.dao.impl.AsyncJobInfoErrorDao">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+
+  <!-- VDC Task -->
+
+  <bean id="asyncJobVDCService" class="com.skycloud.management.portal.task.vdc.service.AsyncJobVDCServiceImpl">
+    <property name="asyncJobVDCDao" ref="asyncJobVDCDao" />
+  </bean>
+
+  <bean id="asyncJobVDCDao" class="com.skycloud.management.portal.task.vdc.dao.AsyncJobVDCDaoImpl">
+    <property name="jt" ref="jdbcTemplate" />
+  </bean>
+
+  <bean id="asyncJobVDCDataArchiving" class="com.skycloud.management.portal.task.vdc.job.AsyncJobVDCDataArchiving">
+    <property name="taskService" ref="asyncJobVDCService" />
+  </bean>
+
+  <bean id="syncBusinessInfosService" class="com.skycloud.management.portal.task.vdc.service.SyncBusinessInfosServiceImpl">
+    <property name="taskService" ref="asyncJobVDCService" />
+    <property name="instanceService" ref="instanceService" />
+    <property name="VMTemplateService" ref="VMTemplateService" />
+    <property name="asyncJobService" ref="asyncJobService" />
+  </bean>
+
+  <bean id="sendMailService" class="com.skycloud.management.portal.front.task.service.impl.SendMailTaskService">
+    <property name="userLogService" ref="userLogService" />
+  </bean>
+  <bean id="sendSmsService" class="com.skycloud.management.portal.front.task.service.impl.SendSmsTaskService">
+    <property name="userLogService" ref="userLogService" />
+  </bean>
+</beans>

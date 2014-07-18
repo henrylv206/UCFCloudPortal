@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="cloud_mall" extends="default">
+		<action name="showServiceMall" class="cloudServiceMallAction"
+			method="showServiceMall">
+			<result type="json" name="success">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">
+					listResp\.list\[\d+\]\.id,
+					listResp\.list\[\d+\]\.code,
+					listResp\.list\[\d+\]\.name,
+					listResp\.list\[\d+\]\.state,
+					listResp\.list\[\d+\]\.description,
+					listResp\.list\[\d+\]\.quotaNum,
+					listResp\.list\[\d+\]\.period,
+					listResp\.list\[\d+\]\.price,
+					listResp\.list\[\d+\]\.unit,
+					listResp\.list\[\d+\]\.picture,
+					listResp\.list\[\d+\]\.doc,
+					listResp\.list\[\d+\]\.templateId,
+					listResp\.list\[\d+\]\.productItemId,
+					listResp\.list\[\d+\]\.createDate,
+					listResp\.list\[\d+\]\.modifyDate,
+					listResp\.list\[\d+\]\.isDefault,
+					listResp\.list\[\d+\]\.type,
+					listResp\.list\[\d+\]\.bindProductItem,
+					listResp\.list\[\d+\]\.typeName,
+					listResp\.list\[\d+\]\.unitName,
+					listResp\.list\[\d+\]\.productItemName,
+					listResp\.list\[\d+\]\.templateNames,
+					listResp\.list\[\d+\]\.resourcePoolsId,
+					listResp\.list\[\d+\]\.zoneId,
+					listResp\.list\[\d+\]\.special,
+					listResp\.page,
+					listResp\.size,
+					listResp\.total
+				</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+		</action>
+		<action name="showCommendService" class="cloudServiceMallAction"
+			method="showCommendService">
+			<result type="json" name="success">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">
+					listResp\.list\[\d+\]\.id,
+					listResp\.list\[\d+\]\.code,
+					listResp\.list\[\d+\]\.name,
+					listResp\.list\[\d+\]\.state,
+					listResp\.list\[\d+\]\.description,
+					listResp\.list\[\d+\]\.quotaNum,
+					listResp\.list\[\d+\]\.period,
+					listResp\.list\[\d+\]\.price,
+					listResp\.list\[\d+\]\.unit,
+					listResp\.list\[\d+\]\.picture,
+					listResp\.list\[\d+\]\.doc,
+					listResp\.list\[\d+\]\.templateId,
+					listResp\.list\[\d+\]\.productItemId,
+					listResp\.list\[\d+\]\.createDate,
+					listResp\.list\[\d+\]\.modifyDate,
+					listResp\.list\[\d+\]\.isDefault,
+					listResp\.list\[\d+\]\.type,
+					listResp\.list\[\d+\]\.bindProductItem,
+					listResp\.list\[\d+\]\.typeName,
+					listResp\.list\[\d+\]\.unitName,
+					listResp\.list\[\d+\]\.productItemName,
+					listResp\.list\[\d+\]\.templateNames,
+					listResp\.list\[\d+\]\.resourcePoolsId,
+					listResp\.list\[\d+\]\.zoneId,
+					listResp\.list\[\d+\]\.special,
+					listResp\.page,
+					listResp\.size,
+					listResp\.total
+				</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+		</action>
+    	<action name="listTemplateType" class="cloudServiceMallAction" method="listTemplateType">
+    		<result type="json" name="success">
+	    		<param name="root">templateTypeList</param>
+    		</result>    	
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>	
+    	</action>
+		<action name="showServiceList" class="cloudServiceMallAction" method="showServiceList">
+			<result type="json" name="success">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">
+					listResp\.list\[\d+\]\.id,
+					listResp\.list\[\d+\]\.orderId,
+					listResp\.list\[\d+\]\.serviceName,
+					listResp\.list\[\d+\]\.sName,
+					listResp\.list\[\d+\]\.serviceType,
+					listResp\.list\[\d+\]\.serviceTypeName,
+					listResp\.list\[\d+\]\.serviceDesc,
+					listResp\.list\[\d+\]\.sDesc,
+					listResp\.list\[\d+\]\.createDtStr,
+					listResp\.list\[\d+\]\.expiryDateStr,
+					listResp\.list\[\d+\]\.state,
+					listResp\.list\[\d+\]\.num,
+					listResp\.list\[\d+\]\.flag,
+					listResp\.list\[\d+\]\.vmid,
+					listResp\.list\[\d+\]\.storageSize,
+					listResp\.list\[\d+\]\.eInstanceId,
+					listResp\.list\[\d+\]\.clusterId,
+					listResp\.list\[\d+\]\.resCode,
+					listResp\.list\[\d+\]\.resourcePoolsId,
+					listResp\.list\[\d+\]\.zoneId,
+					listResp\.list\[\d+\]\.special,
+					listResp\.list\[\d+\]\.orderFlag,
+					listResp\.page,
+					listResp\.size,
+					listResp\.total
+				</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+		</action>
+		
+		<action name="showQuitInstance" class="cloudServiceMallAction" method="showQuitInstance">
+			<result type="json" name="success">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">	
+					listResp\.list\[\d+\]\.serviceName,				
+					listResp\.list\[\d+\]\.vmid,
+					listResp\.list\[\d+\]\.eInstanceId,
+					listResp\.list\[\d+\]\.clusterId,
+					listResp\.list\[\d+\]\.resCode,
+					listResp\.list\[\d+\]\.state,
+					listResp\.list\[\d+\]\.orderId									
+				</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+		</action>	
+		
+    
+		<action name="showResourceList" class="cloudServiceMallAction" method="showResourceList">
+			<result type="json" name="success">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">
+					listResp\.list\[\d+\]\.id,
+					listResp\.list\[\d+\]\.instanceName,
+					listResp\.list\[\d+\]\.productId,
+					listResp\.list\[\d+\]\.serviceId,
+					listResp\.list\[\d+\]\.serviceName,
+					listResp\.list\[\d+\]\.templateTypeName,
+					listResp\.list\[\d+\]\.comment,
+					listResp\.list\[\d+\]\.createDt,
+					listResp\.list\[\d+\]\.lastupdateDt,
+					listResp\.list\[\d+\]\.state,
+					listResp\.list\[\d+\]\.cpuNum,
+					listResp\.list\[\d+\]\.memorySize,
+					listResp\.list\[\d+\]\.osDesc,
+					listResp\.list\[\d+\]\.storeType,
+					listResp\.list\[\d+\]\.storageSize,
+					listResp\.list\[\d+\]\.networkDesc,
+					listResp\.list\[\d+\]\.serviceProvider,
+					listResp\.list\[\d+\]\.maxByteSize,
+					listResp\.list\[\d+\]\.backNum,
+					listResp\.list\[\d+\]\.ipAddress,
+					listResp\.list\[\d+\]\.ipAddressId,
+					listResp\.list\[\d+\]\.ipType,
+					listResp\.list\[\d+\]\.eInstanceId,
+					listResp\.list\[\d+\]\.resCode,
+					listResp\.list\[\d+\]\.templateType,
+					listResp\.list\[\d+\]\.templateId,
+					listResp\.list\[\d+\]\.bkStorageSize,
+					listResp\.list\[\d+\]\.volumestate,
+					listResp\.list\[\d+\]\.vmInstanceId,
+					listResp\.list\[\d+\]\.vmName,
+					listResp\.list\[\d+\]\.zoneId,
+					listResp\.list\[\d+\]\.resourcePoolsId,
+					listResp\.list\[\d+\]\.special,
+					listResp\.list\[\d+\]\.password,
+					listResp\.list\[\d+\]\.mcType,
+					listResp\.list\[\d+\]\.resourceInfo,
+					listResp\.list\[\d+\]\.lbProtocol,
+					listResp\.list\[\d+\]\.lbPort,
+					listResp\.list\[\d+\]\.lbPolicy,
+					listResp\.curProjectId,
+					listResp\.initPassword,
+					listResp\.ResId,
+					listResp\.page,
+					listResp\.size,
+					listResp\.total
+				</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+		</action>
+		<action name="showResourceList2" class="cloudServiceMallAction"
+			method="showResourceList2">
+			<result type="json" name="success">
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">
+					listResp\.list\[\d+\]\.id,
+					listResp\.list\[\d+\]\.instanceName,
+					listResp\.list\[\d+\]\.serviceId,
+					listResp\.list\[\d+\]\.serviceName,
+					listResp\.list\[\d+\]\.templateTypeName,
+					listResp\.list\[\d+\]\.comment,
+					listResp\.list\[\d+\]\.createDt,
+					listResp\.list\[\d+\]\.lastupdateDt,
+					listResp\.list\[\d+\]\.state,
+					listResp\.list\[\d+\]\.cpuNum,
+					listResp\.list\[\d+\]\.memorySize,
+					listResp\.list\[\d+\]\.osDesc,
+					listResp\.list\[\d+\]\.storeType,
+					listResp\.list\[\d+\]\.storageSize,
+					listResp\.list\[\d+\]\.networkDesc,
+					listResp\.list\[\d+\]\.serviceProvider,
+					listResp\.list\[\d+\]\.maxByteSize,
+					listResp\.list\[\d+\]\.backNum,
+					listResp\.list\[\d+\]\.ipAddress,
+					listResp\.list\[\d+\]\.ipAddressId,
+					listResp\.list\[\d+\]\.ipType,
+					listResp\.list\[\d+\]\.eInstanceId,
+					listResp\.list\[\d+\]\.resCode,
+					listResp\.list\[\d+\]\.templateType,
+					listResp\.list\[\d+\]\.templateId,
+					listResp\.list\[\d+\]\.bkStorageSize,
+					listResp\.list\[\d+\]\.volumestate,
+					listResp\.list\[\d+\]\.vmInstanceId,
+					listResp\.list\[\d+\]\.vmName,
+					listResp\.list\[\d+\]\.zoneId,
+					listResp\.curProjectId,
+					listResp\.page,
+					listResp\.size,
+					listResp\.total
+				</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+		</action>
+		
+		
+        <action name="getMonitorData" class="cloudServiceMallAction" method="getMonitorData">
+          <result type="json" name="success">
+            <param name="root">vmmolist</param>
+          </result>
+          <result type="json" name="error">
+            <param name="root">message</param>
+          </result>
+        </action>
+    	<!-- added by zhanghuizheng -->
+	    <action name="getConfigParams" class="cloudServiceMallAction" method="getTemplateConfigParams">
+	      <result type="json" name="success">
+	        <param name="root">configParams</param>
+	      </result>
+	      <result type="json" name="error">
+	        <param name="root">message</param>
+	      </result>
+	    </action>
+		
+    	<action name="getProductById" class="cloudServiceMallAction" method="getProductById">
+    		<result type="json" name="success">
+	    		<param name="root">product</param>
+    		</result>    	
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>	
+    	</action>
+    	
+    	<action name="getMyTopoStructData" class="cloudServiceMallAction" 
+    			method="getMyTopoStructData">
+    		<result type="json" name="success">
+	    		<param name="root">returnJson</param>
+    		</result>    	
+			<result type="json" name="error">
+				<param name="root">returnJson</param>
+			</result>	
+    	</action>
+    	<action name="getMyMonitorCount" class="cloudServiceMallAction" 
+    			method="getMyMonitorCount">
+    		<result type="json" name="success">
+	    		<param name="root">returnJson</param>
+    		</result>    	
+			<result type="json" name="error">
+				<param name="root">returnJson</param>
+			</result>
+    	</action>
+    	
+    			
+		
+	</package>
+	<package name="topo" extends="default">
+    	
+	</package>
+</struts>

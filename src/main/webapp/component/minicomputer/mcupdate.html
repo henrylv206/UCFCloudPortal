@@ -1,0 +1,43 @@
+
+<div class="topic">
+    <h4><img src="../images/icons/icon-popup-01.png" />申请修改</h4>
+  </div>
+  <div class="cont" style="padding:0px 10px 5px;">
+  <table align="center" class="poopupTbl">    
+    <tr id="cpu_num" >
+      <!-- fix bug 2157 -->	
+      <td class="name"><span>模板：</span></td>
+      <td>
+        <select id="recpu_num" class="Txtle line245"></select>
+      </td>
+    </tr>
+    <!-- <tr id="mem_size">
+      <td><span style="color:black; float:left; ">内存大小：</span></td>
+      <td>
+        <select id="remem_size"></select>
+      </td>
+    </tr>
+     -->
+    <tr>
+      <td class="name"><span>申请理由：</span></td>
+      <td><a class="Areale2">
+		<textarea id="mcreason" class="Areari2 line5"></textarea>
+		</a>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2 align="center" height="30" >
+        <input type="hidden" id="mcinstanceId" />
+        <input type="hidden" id="mcoperType" />
+        <input type="hidden" id="mccurSize" />
+        <input type="hidden" id="mccurNum" />
+        <input type="hidden" id="mcclusterId" />
+      </td>
+    </tr>
+  </table>
+  <div class="shopArea2">
+      <input type="button" value="确认" class="popupBtn02"  class="popwindow_btn" onclick="mcmanage.confirm();"/>
+      <input type="button" value="取消" class="popupBtn02" id="close" />
+    </div>
+  
+  </div>

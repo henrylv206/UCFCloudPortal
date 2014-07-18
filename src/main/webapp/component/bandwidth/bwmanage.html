@@ -1,0 +1,33 @@
+<div class="shade"></div>
+<div class="popupDiv1" >
+  <div class="topic">
+    <h4><img src="../images/icons/icon-popup-01.png" />服务修改</h4>
+  </div>
+  <div class="cont">
+    <table class="poopupTbl">
+      <tbody>
+		<tr id="td_bandWidthSize" >
+	      <td><span>带宽大小：</span></td>
+	      <td>
+	        <select id="rebandWidthSize"></select>
+	      </td>
+	    </tr>
+		
+		<tr>
+	      <td><span  >申请理由：</span></td>
+	      <td>
+	        <textarea id="bwreason" style=" height:60px; font-size:12px;margin-right:10px;margin-top:10px;"></textarea>
+	      </td>
+	    </tr>
+      </tbody>
+    </table>
+    <div class="shopArea2">
+      <input type="button" value="确认" class="popupBtn02" onclick="javascript:bwmanage.confirm();"/>
+      <input type="button" value="取消" class="popupBtn02" id="close" />
+      <input type="hidden" id="bwinstanceId" />
+      <input type="hidden" id="bwoperType" />
+      <input type="hidden" id="bwcurSize" />
+      
+    </div>
+  </div>
+</div>

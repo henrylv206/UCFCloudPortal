@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <bean id="baseJdbcDao" abstract="true"
+		class="com.skycloud.management.portal.webservice.databackup.jdbc.BaseJdbcDao">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
+		</property>
+  </bean>
+  <bean id="dbtemplateDao" class="com.skycloud.management.portal.webservice.databackup.dao.impl.DBTemplateDao" parent="baseJdbcDao"/>
+  <bean id="dbIntanceInfoDao" class="com.skycloud.management.portal.webservice.databackup.dao.impl.DBTIntanceInfodao" parent="baseJdbcDao"/>
+  <bean id="dbuserSnapshotDao" class="com.skycloud.management.portal.webservice.databackup.dao.impl.DBUserSnapshotDao" parent="baseJdbcDao"/>
+  <bean id="dbAsycnJobDao" class="com.skycloud.management.portal.webservice.databackup.dao.impl.DBAsycnJobDao" parent="baseJdbcDao"/>
+ 
+  <bean id="dbUserSnapshotService" class="com.skycloud.management.portal.webservice.databackup.service.impl.DBUserSnapshotService">
+    <property name="dbuserSnapshotDao" ref="dbuserSnapshotDao" />
+    <property name="dbAsycnJobService" ref="dbAsycnJobService" />
+  </bean>
+  <bean id="dbIntanceInfoService" class="com.skycloud.management.portal.webservice.databackup.service.impl.DBIntanceInfoService">
+    <property name="dbIntanceInfoDao" ref="dbIntanceInfoDao" />
+  </bean>
+  <bean id="dbTemplateService" class="com.skycloud.management.portal.webservice.databackup.service.impl.DBTemplateService">
+    <property name="dbtemplateDao" ref="dbtemplateDao" />
+  </bean>
+  <bean id="dbAsycnJobService" class="com.skycloud.management.portal.webservice.databackup.service.impl.DBAsycnJobService">
+    <property name="dbAsycnJobDao" ref="dbAsycnJobDao" />
+  </bean>
+   <bean id="dataBackUpService" class="com.skycloud.management.portal.webservice.databackup.service.impl.DataBackUpService">
+	    <property name="dbUserSnapshotService" ref="dbUserSnapshotService" />
+	    <property name="dbIntanceInfoService" ref="dbIntanceInfoService" />
+	    <property name="commandService" ref="commandService" />
+	    <property name="asyncJobService" ref="asyncJobService" />
+	    <property name="dbTemplateService" ref="dbTemplateService" />
+	    <property name="instanceService" ref="instanceService" />
+	    <property name="asyncJobDao" ref="asyncJobDao" />
+	    <property name="dbAsycnJobService" ref="dbAsycnJobService" />
+  </bean>
+</beans>

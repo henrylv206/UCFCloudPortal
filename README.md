@@ -1,4 +1,0 @@
-UCFCloudPortal
-==============
-
-ucfgroup cloud portal

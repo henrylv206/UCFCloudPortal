@@ -1,0 +1,36 @@
+  <div class="topic">
+    <h4><img src="../images/icons/icon-popup-01.png" /><span id="popTitle"></span></h4>
+  </div>
+  <div class="cont" id="confirm">
+    <table class="poopupTbl">
+      <tbody>   
+        <tr style="background:#acf7fc;">
+          <td colspan=2></td>
+        </tr> 
+        <tr id="machineTypeForNas">
+         <td class="name" id="cz">机器类型：</td>
+         <td><select name="machineTypeS" id="machineTypeS"><option id="1">虚拟机</option><option id="2">小型机</option><option id="3">物理机</option></select></td>
+        </tr>  
+        <tr id="tr_storage">
+          <td class="name" id="czz"></td>
+          <td><select  name="params" id="params"></select></td>
+        </tr>
+<!--        <tr id="tr_nas_applereason" style="display: none">-->
+<!--	      <td><span  >申请理由：</span></td>-->
+<!--	      <td>-->
+<!--	        <textarea id="nasreason" style=" height:60px; font-size:12px;margin-right:10px;margin-top:10px;"></textarea>-->
+<!--	      </td>-->
+<!--	    </tr>-->
+        
+      </tbody>
+    </table>
+    <div class="shopArea2">
+      <input type="button" value="确认" class="popupBtn02" id="vmbind_btn"/>
+      <input type="button" value="全部" class="popupBtn02" id="allvm_btn" style="display: none"/>
+      <input type="button" value="取消" class="popupBtn02" id="close" />
+            <input type="hidden" id="nasrescode" /> 
+            <input type="hidden" id="instanceId" /> 
+            <input type="hidden" id="resourcepoolsid" /> 
+               
+    </div>
+  </div>

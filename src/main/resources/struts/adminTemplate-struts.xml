@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <package name="template" namespace="/template" extends="default">
+       	 
+    <action name="listDISKTemplateByType" class="VMTemplateAction" method="listDISKTemplateByType">
+      <result type="json" name="success">
+        <param name="ignoreHierarchy">false</param>
+        <param name="includeProperties">
+          listResp\.list\[\d+\]\.templateDesc,
+          listResp\.list\[\d+\]\.cpuNum,
+          listResp\.list\[\d+\]\.memorySize,
+          listResp\.list\[\d+\]\.id,
+          listResp\.list\[\d+\]\.storageSize,
+          listResp\.list\[\d+\]\.state,
+          listResp\.list\[\d+\]\.networkDesc,
+          listResp\.list\[\d+\]\.osSize,
+          listResp\.list\[\d+\]\.type,
+          listResp\.list\[\d+\]\.operType,
+          listResp\.list\[\d+\]\.stateName,
+          listResp\.list\[\d+\]\.vethAdaptorNum,
+          listResp\.list\[\d+\]\.vmos,
+          listResp\.list\[\d+\]\.storeType,
+          listResp\.page,
+          listResp\.size,
+          listResp\.total
+        </param>
+      </result>
+      <result type="json" name="error">
+        <param name="root">message</param>
+      </result>
+    </action>       
+    
+    
+    <action name="getVMTemplateById" class="VMTemplateAction" method="getVMTemplateById">
+      <result type="json" name="success">
+        <param name="ignoreHierarchy">false</param>
+        <param name="root">template</param>
+      </result>
+      <result type="json" name="error">
+        <param name="root">message</param>
+      </result>
+    </action>
+    
+    <action name="getConfigParams" class="VMTemplateAction" method="getTemplateConfigParams">
+      <result type="json" name="success">
+        <param name="root">configParams</param>
+      </result>
+      <result type="json" name="error">
+        <param name="root">message</param>
+      </result>
+    </action>
+    
+    <!-- 1.3功能，支持多资源池 ：根据资源池id查询其下的操作系统，以对jsp页面的操作系统下拉列表进行初始化-->
+    <action name="getOsesByResourcePoolId" class="VMTemplateAction" method="getOsesByResourcePoolId">
+      <result type="json" name="success">
+        <param name="root">message</param>
+      </result>
+      <result type="json" name="error">
+        <param name="root">message</param>
+      </result>
+    </action>
+    <!-- 1.3功能，支持多资源池 ：根据资源池id查询其下的资源域，以对jsp页面的资源域下拉列表进行初始化-->
+    <action name="getZonesByResourcePoolId" class="VMTemplateAction" method="getZonesByResourcePoolId">
+      <result type="json" name="success">
+        <param name="root">message</param>
+      </result>
+      <result type="json" name="error">
+        <param name="root">message</param>
+      </result>
+    </action>
+        
+	<action name="getStoreTypesByOsId" class="VMTemplateAction" method="getStoreTypesByOsId">
+      <result type="json" name="success">
+        <param name="root">message</param>
+      </result>
+      <result type="json" name="error">
+        <param name="root">message</param>
+      </result>
+    </action>    
+	
+  </package>
+</struts>

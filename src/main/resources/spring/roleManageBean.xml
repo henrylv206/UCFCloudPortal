@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <bean id="roleAction" class="com.skycloud.management.portal.admin.sysmanage.action.RoleAction">
+    <property name="roleService" ref="roleService" />
+  </bean>
+  <bean id="roleService" class="com.skycloud.management.portal.admin.sysmanage.service.impl.RoleManageServiceImpl">
+    <property name="roleManageDao" ref="roleManageDao" />
+  </bean>
+  <bean id="roleManageDao" class="com.skycloud.management.portal.admin.sysmanage.dao.impl.RoleManageDaoImpl">
+<property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+</beans>
+

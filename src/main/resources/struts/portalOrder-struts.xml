@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="order" namespace="/order" extends="default">
+		<action name="PortalOrder_*" class="orderAction" method="{1}">
+			<result type="json" name="success">
+				<param name="root" >message</param>
+			</result>
+            <result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+			<result type="json" name="findAllTemplateMC">
+				<param name="root">templateMCList</param>
+			</result>		
+			<result type="json" name="findAllTemplateEBS">
+				<param name="root">templateVMList</param>
+			</result>
+			<result type="json" name="findAllTemplateDISK">
+				<param name="root">templateDISKList</param>
+			</result>			
+			<result type="json" name="findAllVlan">
+				<param name="root">vlanList</param>
+			</result>
+			<result type="json" name="findAllCluster">
+				<param name="root">clusterList</param>
+			</result>
+			<result type="json" name="findZoneList">
+				<param name="root">zoneList</param>
+			</result>
+			<result type="json" name="findZoneById">
+				<param name="root">message</param>
+			</result>
+			<result type="json" name="findNetworkList">
+				<param name="root">networkList</param>
+			</result>
+			<result type="json" name="findNetworkListOther">
+				<param name="root">networkListOthers</param>
+			</result>
+			<result type="json" name="showResourcePoolNameById">
+				<param name="root">resourcePoolName</param>
+			</result>
+			<result type="json" name="deleteNewOrderById">
+				<param name="root">message</param>
+			</result>
+			<result type="json" name="testPingWindows">
+				<param name="root">message</param>
+			</result>
+			<result type="json" name="testPingLinux">
+				<param name="root">message</param>
+			</result>
+			<result type="json" name="showInstanceInfoNameExists">
+				<param name="root">message</param>
+			</result>
+			<result type="json" name="findVlanByZoneidNetworkid">
+				<param name="root">vlanList</param>
+			</result>
+			<result type="json" name="advancedSearchVMList">
+				<param name="root">templateVMList</param>
+			</result>
+			<result type="json" name="advancedSearchMCList">
+				<param name="root">templateMCList</param>
+			</result>
+			<result type="json" name="showNicsDhcpSwitch">
+				<param name="root" >message</param>
+			</result>
+			<result type="json" name="findAllTemplateService">
+				<param name="root">templateVMList</param>
+			</result>
+			<result type="json" name="showPublicIp">
+				<param name="root">publicIpList</param>
+			</result>
+			<result type="json" name="ShowInstanceCountByUser">
+				<param name="root">message</param>
+			</result>
+            <!--			//to fix bug:0001910-->
+			<result type="json" name="findConfigurationsByName">
+				<param name="root">message</param>
+			</result>			
+		</action>
+		
+			<action name="checkUserVlanId" class="orderAction" method="checkUserVlanId">
+			<result type="json" name="success">
+				<param name="root">flag</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">flag</param>
+			</result>
+		</action>
+		<action name="showTemplateVMList" class="orderAction" method="findAllTemplateVM">
+			<result type="json" name="success">
+				<param name="root">templateVMList</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">returnJson</param>
+			</result>
+		</action>
+		
+		   
+		
+		<action name="showTemplateVMByID" class="orderAction" method="findTemplateVMByID">
+			<result type="json" name="success">
+			    <param name="ignoreHierarchy">false</param>
+				<param name="root">templateVM</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">returnJson</param>
+			</result>
+		</action>
+		<action name="cancelOrder" class="orderAction" method="cancelOrder">
+			<result type="json"><param name="root">message</param></result>
+		</action>
+		<action name="portal_saveNewOrder" class="orderAction" method="portal_saveNewOrder">
+			<result type="json" name="success">
+				<param name="root" >message</param>
+			</result>
+            <result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+		</action>
+		  
+		<!-- 服务实例订单 -->
+		<action name="myOrderServiceList" class="orderAction" method="myOrderServiceList">
+			<result type="json" name="success">
+				<param name="root" >listResp</param>
+			</result>
+		</action>
+		 
+		
+		<!-- 产品续订和到期自动退订 -->
+		<action name="findServiceInstancePeriodById" class="instancePeriodManageAction" method="findServiceInstancePeriodById">
+			<result type="json" name="success">
+			    <param name="ignoreHierarchy">false</param>
+				<param name="root">servicePeriodInfo</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+		</action>		
+		
+		<action name="findInstancePeriodById" class="instancePeriodManageAction" method="findInstancePeriodById">
+			<result type="json" name="success">
+			    <param name="ignoreHierarchy">false</param>
+				<param name="root">instancePeriodInfo</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+		</action>
+		<action name="updateInstancePeriod" class="instancePeriodManageAction" method="updateInstancePeriod">
+			<result type="json" name="success">
+				<param name="root">message</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+		</action>
+		<action name="updateServicePeriod" class="instancePeriodManageAction" method="updateServicePeriod">
+			<result type="json" name="success">
+				<param name="root">message</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">message</param>
+			</result>
+		</action>		
+	</package>
+</struts>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="customer" namespace="/customerAdmin" extends="default1">
+		<!-- <action name="register" class="customeradminAction" method="register">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>
+		</action> -->
+		
+			<!-- <action name="insertUserInfo" class="customeradminAction" method="insertUserInfo">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>
+		</action> -->
+		
+		<!-- <action name="findCompInfoById" class="customeradminAction" method="findCompInfoById">
+			<result  type="json">
+				<param name="root">company</param>
+				<param name="excludeNullProperties">false</param>
+				<param name="excludeProperties">
+					\S+.hibernateLazyInitializer,
+					\S+.TCompanyInfos,
+					TCompanyUsers,					
+					TCompUgroups,
+					TOrders
+				</param>
+				<param name="includeProperties">
+					\w+,
+					\S+.TCompanyInfos,
+					TCategory.category\w+,
+					TProperty.property\w+,
+					TCity.\w+,
+					TCity.TProvince.provinceId,
+					TCity.TProvince.provinceName,
+					TClass.className,
+					TClass.classId,
+					TCompanyAdmins
+				</param>
+			</result>
+		</action> -->
+		<action name="verifyCode" class="customeradminAction" method="verifyCode">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>			
+		</action>
+		<!-- <action name="getDynCode" class="customeradminAction" method="getDynCode">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>			
+		</action> -->
+		<!-- <action name="dynCodeTimout" class="customeradminAction" method="dynCodeTimout">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>			
+		</action> -->
+		
+		<action name="login" class="customeradminAction"  method="login">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>
+		</action>
+		<action name="updateAdminPwd" class="customeradminAction" method="updateAdminPwd">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>
+			<result name="error" type="json">
+			   <param name="root">state</param>
+			</result>
+		</action>
+		
+		<!-- <action name="checkAccoutIsExist" class="customeradminAction" method="findAdminByAccount">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>
+			<result name="error" type="json">
+			   <param name="root">state</param>
+			</result>
+		</action> -->
+		<!-- 判断邮箱是否存在 -->
+		<action name="checkEmailIsExist" class="customeradminAction" method="checkEmailIsExist">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>
+			<result name="error" type="json">
+			   <param name="root">state</param>
+			</result>
+		</action>
+		<action name="getSessioninfo" class="customeradminAction" method="getSessioninfo">
+			<result  type="json">
+				<param name="root">user</param>
+				<param name="excludeNullProperties">false</param>
+				<param name="excludeProperties">
+					\S+.hibernateLazyInitializer,
+					\S+.TCompanyInfos,
+					TCompanyUsers,					
+					TCompUgroups,
+					TOrders
+				</param>
+				<param name="includeProperties">
+					\w+,
+					\S+.TCompanyAdmins
+				</param>
+			</result>
+		</action>
+		<action name="findPazz" class="findpazzAction">
+			<result name="success" type="json">
+				<param name="root">state</param>
+            </result>
+            <result name="error" type="json">
+				<param name="root">state</param>
+            </result>
+		</action>
+		<action name="frontLogout" class="customeradminAction" method="frontLogout">
+			<result name="success" type="json">
+				<param name="root">state</param>
+			</result>
+		</action>		
+		
+		<!-- findUserOfGroupByPage 分页形式-->
+		<!-- <action name="findUserOfGroupByPage" class="customeradminAction" method="findUserOfGroupByPage">
+			<result type="json">
+			    <param name="root">compUsersPageResult</param>
+				<param name="excludeNullProperties">true</param>
+				<param name="includeProperties">
+					result\[\d+\]\.compUserId,
+					result\[\d+\].TCompUgroup,
+					result\[\d+\].TCompUgroup.compUgroupId,
+					result\[\d+\].TCompUgroup.compUgroupName,
+					result\[\d+\]\.compUserAccount,
+					result\[\d+\]\.compUserName,
+					result\[\d+\]\.compUserDept,
+					result\[\d+\]\.compUserPosition,
+					result\[\d+\]\.compUserMobile,
+					autoCount,
+					first,
+					hasNext,
+					hasPre,
+					nextPage,
+					pageNo,
+					pageSize,
+					prePage,
+					totalCount,
+					totalPages
+				</param>
+				</result>
+		</action> -->
+		<!-- <action name="findAllCompanyGroup" class="customeradminAction" method="findAllCompanyGroup">
+			<result type="json">
+				<param name="root">groups</param>
+				<param name="excludeNullProperties">true</param>
+				<param name="includeProperties">
+					\[\d+\]\.compUgroupId,
+					\[\d+\]\.compUgroupName,
+					\[\d+\]\.compUgroupDescr,
+					\[\d+\]\.compUgroupCreater,
+					\[\d+\]\.compUgroupCtime
+				</param>
+			</result>
+		</action> -->
+		<!-- findAllCompanyGroupByPage 分页形式 -->
+		<!-- <action name="findAllCompanyGroupByPage" class="customeradminAction" method="findAllCompanyGroupByPage">
+			<result type="json">
+				<param name="root">groupsPageResult</param>
+				<param name="excludeNullProperties">true</param>
+				<param name="includeProperties">
+					result\[\d+\]\.compUgroupId,
+					result\[\d+\]\.compUgroupName,
+					result\[\d+\]\.compUgroupDescr,
+					result\[\d+\]\.compUgroupCreater,
+					result\[\d+\]\.compUgroupCtime,
+					autoCount,
+					first,
+					hasNext,
+					hasPre,
+					nextPage,
+					pageNo,
+					pageSize,
+					prePage,
+					totalCount,
+					totalPages
+
+					userlist\[\d+\].roles\[\d+\], userlist\[\d+\].roles\[\d+\].permissions\[\d+\], 
+						userlist\[\d+\].roles\[\d+\].permissions\[\d+\].permissionCode, userlist\[\d+\].roles\[\d+\].permissions\[\d+\].menu\.menuId, 
+						userlist\[\d+\].roles\[\d+\].permissions\[\d+\].menu\.menuName, userlist\[\d+\].roles\[\d+\].permissions\[\d+\].menu\.parentMenuId, 
+						userlist\[\d+\].roles\[\d+\].permissions\[\d+\].menu\.actionUrl
+				</param>
+			</result>
+		</action> -->
+		<!-- <action name="findAllcompany" class="customeradminAction" method="findAllcompany">
+			<result type="json">
+				<param name="root">companies</param>
+				<param name="excludeNullProperties">true</param>
+				<param name="includeProperties">
+					\[\d+\]\.compId,
+					\[\d+\]\.compCnName
+				</param>
+			</result>
+		</action> -->
+		<action name="updateUserPwd" class="customeradminAction" method="updateUserPwd">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>
+		</action>			
+		<!-- 删除子账号 -->
+		<!-- <action name="delUser" class="customeradminAction" method="delUser">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>
+			<result name="error" type="json">
+			   <param name="root">state</param>
+			</result>
+		</action> -->
+		<!--查询用户绑定的产品数量  -->
+		<action name="checkInstanceByUserId" class="customeradminAction" method="checkInstanceByUserId">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>
+		</action>
+		<!-- 删除组 -->
+		<!-- <action name="delGroup" class="customeradminAction" method="delGroup">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>
+		</action> -->
+		
+		<!-- 按组生成用户树 -->
+		<!-- <action name="getCompUserTree" class="customeradminAction" method="getCompUserTree">
+			<result type="json">
+				<param name="root">userTree</param>
+				<param name="excludeNullProperties">false</param>
+				<param name="includeProperties">
+				\[\d+\],
+				\[\d+\].\w+,
+				\[\d+\].group,
+				\[\d+\].ischecked,
+				\[\d+\].id,
+				\[\d+\].children\[\d+\],
+				\[\d+\].children\[\d+\].id,
+				\[\d+\].children\[\d+\].ischecked,
+				\[\d+\].children\[\d+\].text,
+				\[\d+\].children\[\d+\].account
+					 \[\d+\]\.group.compUgroupId,
+					\[\d+\]\.group.compUgroupName,
+					\[\d+\]\.compUsers.compUserId,
+					\[\d+\]\.compUsers.compUserName,
+					
+				</param>
+			</result>
+		</action> -->
+		
+	</package>
+</struts>

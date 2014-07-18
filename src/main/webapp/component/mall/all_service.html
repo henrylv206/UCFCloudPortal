@@ -1,0 +1,53 @@
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
+          <input type="hidden" id="as1curPage" value="1" />
+          <input type="hidden" id="as1pageSize" value="5" />
+          <input type="hidden" id="as1total" value="1" />
+  		  <input type="hidden" id="sales" value=""/>
+  		  <input type="hidden" id="price" value=""/>      	
+  <div class="hotList03" >
+  	<span class="prev2" id="as1p" onclick="turnPage(-1, 1)"></span>
+  	<span class="next2" id="as1n" onclick="turnPage(1, 1)"></span>
+    <div class="top"></div>
+    <div class="hotTitle">全部服务</div>
+    <div class="cont3">
+      <h1 class="allsearch">
+      	<span id="AllServicePrice"><a id="cell" class="allserh4" onclick="chclass(this);closSelect();order('price')" title="按价格升或降排序">价格</a></span>
+      	<a id="cell" class="allserh4" onclick="chclass(this);closSelect();order('sales')" title="按申请量升或降排序">申请量</a><!-- bug 0005222 -->
+      	<a id="cell" class="current" onclick="chclass(this);closSelect();order('date')" title="按创建时间降序排序">默认</a>
+      	<a id="cell" class="allserh4" onclick="chclass(this);closSelect();query()">搜索</a>
+      	<input type="button"  class="allserh3"  id="typeBtn"></input>
+      	<input type="text" class="allserh2" id="typeName"  value="全部" />
+      	<input type="hidden" id="typeId" value="0"/>
+      	<input type="hidden" id="clickSelect" value="0"/>      	
+      	<div id="tempType" style="display:none; " class="select-o" >
+      		<ul id="tempType_ul" style="padding:0px 0px;"></ul>
+      	</div>  
+      	<input type="text" class="allserh1" id="keyword"/>
+      </h1>
+      <ul id="all_service_part1" class="all" ></ul>
+    </div>
+    <div class="bottomArea">
+      <div class="bottonCont">
+      </div>
+    </div>
+  </div>
+  <!--end hotList03-->
+    <div id="dialog_confirmation" title="确认"></div>
+  
+          <input type="hidden" id="as2curPage" value="1" />
+          <input type="hidden" id="as2pageSize" value="5" />
+          <input type="hidden" id="as2total" value="1" />
+  
+  <div class="hotList03" style="margin-top:-12px;" id="allpart2">
+  	<span class="prev"  id="as2p" onclick="turnPage(-1, 1)"></span>
+  	<span class="next" id="as2n" onclick="turnPage(1, 1)"></span>
+    <div class="cont">
+      <ul id="all_service_part2"></ul>
+    </div>
+    <div class="bottomArea">
+      <div class="bottonCont">
+      </div>
+    </div>
+  </div>
+  <!--end hotList03-->

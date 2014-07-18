@@ -1,0 +1,30 @@
+<div class="shade"></div>
+<div class="popupDiv1" >
+  <div class="topic">
+    <h4><img src="../images/icons/icon-popup-01.png" />服务修改</h4>
+  </div>
+  <div class="cont">
+    <table class="poopupTbl">
+      <tbody>
+		<tr id="td_osSize" >
+	      <td><span>存储空间：</span></td>
+	      <td>
+	        <select id="reOSSize"></select>
+	      </td>
+	    </tr>
+		
+		<tr>
+	      <td><span  >申请理由：</span></td>
+	      <td>
+	        <textarea id="osreason" style=" height:60px; font-size:12px;margin-right:10px;margin-top:10px;"></textarea>
+	      </td>
+	    </tr>
+      </tbody>
+    </table>
+    <div class="shopArea2">
+      <input type="button" value="确认" class="popupBtn02" onclick="javascript:osmanage.confirm();"/>
+      <input type="button" value="取消" class="popupBtn02" id="close" />
+      <input type="hidden" id="osinstanceId" />    
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  
+  <bean id="backUpManageAction" class="com.skycloud.management.portal.front.vdc.action.BackUpManageAction" scope="prototype">
+    <property name="backUpInstanceOperateService" ref="backUpInstanceOperateService" />
+    <property name="dataBackUpService" ref="dataBackUpService" />
+    <property name="VMTemplateService" ref="VMTemplateService" />
+    <property name="cloudAPIService" ref="cloudAPIService" />
+    <property name="productService" ref="productService" />
+    <property name="userService" ref="userService" />
+  </bean>
+       
+ <bean id="arrayLbService" class="com.skycloud.array.lb.service.ArrayServiceImpl" >
+        <property name="urlIp" value="${array.lb.url}"></property>
+        <property name="port" value="${array.lb.port}"></property>
+        <property name="username" value="${array.lb.username}"></property>
+        <property name="password" value="${array.lb.password}"></property>
+  </bean>
+  
+</beans>

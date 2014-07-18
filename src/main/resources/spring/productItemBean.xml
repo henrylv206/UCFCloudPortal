@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <bean id="productItemAction" class="com.skycloud.management.portal.admin.productitem.action.ProductItemAction" scope="prototype">
+    <property name="productItemService" ref="productItemService" />
+    <!-- <property name="productService" ref="productService" /> -->
+    <!-- <property name="parametersService" ref="parametersService" /> -->
+  </bean>
+
+  <bean id="productItemService" class="com.skycloud.management.portal.admin.productitem.service.impl.ProductItemServiceImpl">
+    <property name="productItemDAO" ref="productItemDAO" />
+    <property name="productDao" ref="productDao" />
+    <property name="productItemFrontDAO" ref="productItemFrontDAO" />
+    <property name="productItemRelationDAO" ref="productItemRelationDAO" />
+    <property name="productItemRelationFrontDAO" ref="productItemRelationFrontDAO" />
+    <property name="menuDAO" ref="menuDAO" />
+  </bean>
+
+  <bean id="productItemDAO" class="com.skycloud.management.portal.admin.productitem.dao.impl.ProductItemDAOImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  
+  <bean id="productItemFrontDAO" class="com.skycloud.management.portal.admin.productitem.dao.impl.ProductItemFrontDAOImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  
+  <bean id="productItemRelationDAO" class="com.skycloud.management.portal.admin.productitem.dao.impl.ProductItemRelationDAOImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>  
+  
+  <bean id="productItemRelationFrontDAO" class="com.skycloud.management.portal.admin.productitem.dao.impl.ProductItemRelationFrontDAOImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  
+  <bean id="menuDAO" class="com.skycloud.management.portal.admin.menu.dao.impl.MenuDAOImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  
+</beans>

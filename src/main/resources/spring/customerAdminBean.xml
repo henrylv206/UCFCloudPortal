@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="customeradminAction"
+		class="com.skycloud.management.portal.front.customer.action.AdminAction" scope="prototype">
+		<property name="customeruserService" ref="adminService" />
+		<property name="userService" ref="userService" />
+		<!-- <property name="loginService" ref="loginService" /> -->
+		<!-- <property name="perService" ref="permissionService" /> -->
+		<property name="smsSend" ref="mailSend" />
+	</bean>
+	<bean id="adminDao"
+		class="com.skycloud.management.portal.front.customer.dao.impl.AdminDAOImpl" >
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="companyDao"
+		class="com.skycloud.management.portal.front.customer.dao.impl.CompanyDAOImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="adminService"
+		class="com.skycloud.management.portal.front.customer.service.impl.AdminServiceImpl">
+		<property name="adminDao" ref="adminDao" />
+		<property name="companyDao" ref="companyDao" />
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	<bean id="findpazzAction" class="com.skycloud.management.portal.front.customer.action.FindPazzAction">
+		<property name="findpazzService" ref="findpazzService" />
+	</bean>
+	<!-- Service -->
+	<bean id="findpazzService"
+		class="com.skycloud.management.portal.front.customer.service.impl.FindPazzServiceImpl">
+		<property name="adminDao" ref="adminDao"></property>
+		<property name="mailSend" ref="mailSend"></property>
+		<property name="text">
+			<value>${find.pazz.text}</value>
+		</property>
+		<property name="fromMail">
+			<value>${mail.from}</value>
+		</property>
+		<property name="subject">
+			<value>${find.pazz.subject}</value>
+		</property>
+	</bean>
+</beans>

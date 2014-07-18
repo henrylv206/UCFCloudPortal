@@ -1,0 +1,101 @@
+	<div class="breadcrumbs"><span>我的订单</span></div>
+	<div class="sShop">
+    <table class="shophead" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="line3">订单编号：</td>
+        <td> 
+			<input id="orderId"  type="text" class="inpText1"/></td>
+        <td class="line3">订单状态：</td>
+<!--        to fix bug:3974  add:  class="Txtle line104"-->
+        <td><select id="orderState" class="Txtle line104" name="orderState"  width="100">
+    			</select>
+		</td>
+        <td class="line3">申请周期：</td>
+        <td><select id="recentDate" class="Txtle line104" name="recentDate" width="100" onchange="dateChangeById()">
+			    <option value="-1" >全部</option>
+				<option value="1" >最近一月</option>
+				<option value="2" >最近一周</option>
+		</select>
+		</td>
+        <td class="line2">&nbsp;</td>
+        <td class="fr"><input id="orderselect" type="button" value="查询" class="btnCss01 fr"/></td>
+      </tr>
+      <tr>
+        <td class="line3">申请时间：</td>
+        <td><input id="startdate" type="text" class="inpText1 query-pull i-date"/></td>
+        <td class="line1">至</td>
+        <td><input id="enddate"  type="text" class="inpText1 query-pull i-date"/></td>
+        <td class="line1">&nbsp;</td>
+        <td>&nbsp;</td>
+        <td class="line2">&nbsp;</td>
+        <td></td>
+      </tr>
+    </table>
+    </div>
+    
+    <div class="tblWrap">
+      <table class="listTbl">
+        <thead id="orderlisttop" class="orderlisttop">
+          <tr>
+            <th width='5%' class="number">编号</th><!-- fix bug 3862 -->
+            <th>申请人</th>
+            <th>申请类型</th>
+            <th id="orderMomey" class="money" >订单金额</th>
+            <th>创建时间</th>
+            <th>订单状态</th>
+            <th width="20%">审核理由</th>
+            <th class="shop last">操作</th>
+          </tr>
+        </thead>
+      
+        <tbody  id="orderlisttab"  class="orderlisttab">
+<!--        <div id="orderlisttab"  class="orderlisttab">-->
+<!--		</div>-->
+<!--          <tr>-->
+<!--            <td class="number">1</td>-->
+<!--            <td><a class="quit" href="IndentSee.html">212454213546</a></td>-->
+<!--            <td>eric01</td>-->
+<!--            <td class="money">19,230.00</td>-->
+<!--            <td>2012-07-22 12:22"17</td>-->
+<!--            <td>一级通过</td>-->
+<!--            <td class="shop last">-->
+<!--              <a href="#"><img src="../images/icons/icon-edit.png" /></a>-->
+<!--              <a href="#"><img src="../images/icons/icon-del.png" /></a>-->
+<!--            </td>-->
+<!--          </tr>-->
+        </tbody>
+        
+        <tfoot>
+          <tr>
+            <td colspan="8">
+              <ul class="paging">
+                <li>
+	                <a href="#"><img src="../images/icons/icon-p-first.gif"  onclick="turnOrderPage(-1, 0)" /></a>
+	                <a href="#"><img src="../images/icons/icon-p-prev.gif"   onclick="turnOrderPage(-1, 1)" /></a>
+	                <span id="pageInfo"></span>
+	                <a href="#"><img src="../images/icons/icon-p-next.gif"   onclick="turnOrderPage(1, 1)" /></a>
+	                <a href="#"><img src="../images/icons/icon-p-last.gif"   onclick="turnOrderPage(1, 0)" /></a>
+                </li>
+                <li>
+                	第<input type="text" id="page_specified" class="text"/>页
+                	<input type="button" value="GO" class="but"  onclick="turnOrderSpecified()"/>
+                </li>
+				<input type="hidden" id="curPage" value="1" />
+          		<input type="hidden" id="pageSize" value="10" />
+          		<input type="hidden" id="total" value="1" />
+              </ul>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    
+      <!--end tblWrap-->
+    <ul class="ulList02">
+      <li>等待付款单数：<span id="waitpaynum">0</span></li>
+      <li>未完成订单数：<span id="checkbeforenum">0</span></li>
+      <li>已完成订单数：<span id="checkednum">0</span></li><!-- to fix bug:3081 -->
+      <li>已取消订单数：<span id="cancelnum">0</span></li>
+      <li>订单总数：<span id="totalnum">0</span></li>
+    </ul>
+    

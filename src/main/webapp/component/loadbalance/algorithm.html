@@ -1,0 +1,35 @@
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
+<div class="topic">
+    <h4><img src="../images/icons/icon-popup-01.png" />算法</h4>
+  </div>
+  <div class="cont">
+    <table class="poopupTbl lb_manage">
+      <tbody>       
+        <tr>
+          <td class="name">算法：</td>
+          <td>
+          <select class="Txtle line114" id="algo_select">
+<!--          	<option value="0">轮转</option>-->
+<!--          	<option value="1">加权轮转</option>-->
+<!--          	<option value="2">最小连接</option>-->
+<!--			<option value="3">加权最小连接</option>-->
+<!--			<option value="4">随机</option>-->
+<!--			<option value="5">加权随机</option>-->
+<!--			<option value="6">源地址散列</option>-->
+<!--			<option value="7">源地址端口散列</option>-->
+<!--			<option value="8">目的地址散列</option>-->
+
+                <option value="0">轮转</option>
+                <option value="1">最短响应时间</option>
+                <option value="2">最少连接数</option>
+          </select>
+          <!--  <span class="red">*</span></td>-->
+        </tr>
+      </tbody>
+    </table>
+    <div class="shopArea2">
+      <input type="button" value="确认" class="popupBtn02" id="algo_btn" onclick="lbmanage.saveLoadBala()"/>
+      <input type="button" value="取消" class="popupBtn02" id="close" />
+    </div>
+  </div>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                     		">
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+
+	<bean id="firewallDao" class="com.skycloud.management.portal.webservice.naas.dao.impl.FirewallDaoImpl">
+		<property name="restTemplate" ref="restTemplate" />
+		<property name="url" value="${elaster.host}" />
+	</bean>
+	<bean id="loadBalancerDao" class="com.skycloud.management.portal.webservice.naas.dao.impl.LoadBalancerDaoImpl">
+		<property name="restTemplate" ref="restTemplate" />
+		<property name="url" value="${elaster.host}" />
+	</bean>
+	<bean id="firewallService" class="com.skycloud.management.portal.webservice.naas.service.impl.FirewallServiceImpl">
+		<property name="firewallDao" ref="firewallDao" />
+	</bean>
+	<bean id="loadBalancerService" class="com.skycloud.management.portal.webservice.naas.service.impl.LoadBalancerServiceImpl">
+		<property name="loadBalancerDao" ref="loadBalancerDao" />
+	</bean>
+
+	<bean id="firewallTemplateDao" class="com.skycloud.management.portal.webservice.naas.dao.impl.FirewallTemplateDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="loadBalancerTemplateDao" class="com.skycloud.management.portal.webservice.naas.dao.impl.LoadBalancerTemplateDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="firewallTemplateService"
+		class="com.skycloud.management.portal.webservice.naas.service.impl.FirewallTemplateServiceImpl">
+		<property name="firewallTemplateDao" ref="firewallTemplateDao" />
+	</bean>
+	<bean id="loadBalancerTemplateService"
+		class="com.skycloud.management.portal.webservice.naas.service.impl.LoadBalancerTemplateServiceImpl">
+		<property name="loadBalancerTemplateDao" ref="loadBalancerTemplateDao" />
+	</bean>
+
+	<bean id="ipAddressDao" class="com.skycloud.management.portal.webservice.naas.dao.impl.IpAddressDaoImpl">
+		<property name="url" value="${elaster.host}" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="restTemplate" ref="restTemplate"/>
+	</bean>
+	<bean id="ipAddressService" class="com.skycloud.management.portal.webservice.naas.service.impl.IpAddressServiceImpl">
+		<property name="ipAddressDao" ref="ipAddressDao" />
+	</bean>
+
+
+</beans>

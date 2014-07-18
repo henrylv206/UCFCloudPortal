@@ -1,0 +1,34 @@
+  <div class="topic">
+    <h4><img src="../images/icons/icon-popup-01.png" /><span id="popTitle"></span></h4>
+  </div>
+  <div class="cont" id="confirm">
+    <table class="poopupTbl">
+      <tbody> 
+        <tr id="tr_storage">
+          <td class="name" id="czz"></td>
+          <td>
+          <!-- to fix bug [4599] -->
+          <!-- to fix bug [6965] -->
+          <!-- to fix bug [7769] -->
+            <select style="display:none; width:205px" id="params">
+              <skyform:parameter type="COMBOX_CPUNUM" unit="个"/>
+            </select> 
+          </td>
+        </tr>
+	    <tr id="vm_liyou">	    
+	      <td class="name" align="right"><span>申请理由：</span></td>
+	      <td>
+	        <textarea id="apply_reason" style="resize:none;width:200px;height:60px; font-size:12px;margin-right:10px;margin-top:10px;"></textarea>
+	      </td>
+	    </tr>
+      </tbody>
+    </table>
+    <div class="shopArea2">
+      <input type="button" value="确认" class="popupBtn02" id="vm_btn"/>
+      <input type="button" value="取消" class="popupBtn02" id="close" />
+            <input type="hidden" id="vmID" /> 
+            <input type="hidden" id="operType" />
+            <input type="hidden" id="curSize" />
+            <input type="hidden" id="res_code" />      
+    </div>
+  </div>

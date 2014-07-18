@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- Action -->
+	<bean id="cookieAction" class="com.skycloud.management.portal.front.cookie.action.CookieAction" singleton="false">
+		<property name="cookieSerivce" ref="cookieSerivce" /> 
+	</bean>
+	
+	<!-- Service -->
+	<bean id="cookieSerivce" class="com.skycloud.management.portal.front.cookie.service.impl.CookieServiceImpl">
+		<property name="cookieDAO" ref="cookieDAO" />
+	</bean>
+
+	<!-- DAO -->
+	<bean id="cookieDAO" class="com.skycloud.management.portal.front.cookie.dao.impl.CookieDAOImpl">
+		  <property name="jdbcT">
+          	<ref bean="jdbcTemplate" />
+       	  </property>
+	</bean>
+</beans>

@@ -1,0 +1,27 @@
+.mylistTbl thead{height:28px; background:url(../images/MyHome/bg-listTbl-thead-x.gif) repeat-x; line-height:26px;}
+.mylistTbl thead th{background:url(../images/MyHome/bg-listTbl-thead-bg.gif) no-repeat right center; padding-right:1px; text-align:center;}
+.mylistTbl tfoot{height:25px; background:url(../images/MyHome/bg-listTbl-tfoot-x.gif) repeat-x;}
+.mylistTbl tbody{line-height:34px;}
+.mylistTbl th,.mylistTbl td{padding:0 5px;}
+.mylistTbl tfoot td{padding:0 6px;}
+.mylistTbl tbody td{text-align:center; background:url(../images/MyHome/bg-listTbl-tbody-bg.gif) repeat-y right; padding-right:1px;}
+span.time{line-height:18px; display:block; height:18px; float:left; width:74px;}
+span.item{float:left; display:block; height:36px; line-height:36px; text-align:center; width:100%;}
+.mylistTbl tbody td.last,.mylistTbl thead th.last{background:none; padding:0;}
+.mylistTbl th{text-align:left; color:#009fe9;}
+.mylistTbl tbody tr.alt{background:#f4fcff;}
+.mylistTbl tbody tr.over{background:#fffcdb;}
+
+.mylistTbl .number{width:30px; text-align:center;}
+.mylistTbl .money{width:100px;}
+.mylistTbl .shop{width:100px;}
+.mylistTbl .caozuo{width:40px;}
+.mylistTbl .shop1{width:120px;}
+.mylistTbl .shop img{vertical-align:middle;}
+.mylistTbl td.money{color:red;}
+.mylistTbl .proIcon{
+    float:left;
+    width:32px;
+    height:32px;
+    margin-right:10px;
+}

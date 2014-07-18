@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <!--  User Maintain -->
+  <bean id="UserAction" class="com.skycloud.management.portal.admin.sysmanage.action.UserAction">
+    <property name="userService" ref="userService" />
+    <!-- <property name="auditService" ref="auditService" /> -->
+  </bean>
+  <bean id="userService" class="com.skycloud.management.portal.admin.sysmanage.service.impl.UserManageServiceImpl">
+    <property name="userDao" ref="userDao" />    
+    <property name="commandService" ref="commandService" />
+    <property name="jobInstanceService" ref="jobInstanceService" />
+    <property name="roleService" ref="roleService" />
+    <property name="restTemplate" ref="restTemplate" />
+    <property name="mailSend" ref="mailSend"></property>
+		<property name="text">
+			<value>${company.reg.success.content}</value>
+		</property>
+		<property name="fromMail">
+			<value>${mail.from}</value>
+		</property>
+		<property name="subject">
+			<value>${company.reg.success.subject}</value>
+		</property>
+	<property name="resourcePoolsDao" ref="resourcePoolsDao"></property>
+  </bean>
+  <bean id="userDao" class="com.skycloud.management.portal.admin.sysmanage.dao.impl.UserManageDaoImpl">
+	<property name="jdbcTemplate" ref="jdbcTemplate" />
+	<property name="deptDao" ref="deptDao" /> 
+  </bean>
+  <!--  Dept Maintain -->
+  <bean id="deptAction" class="com.skycloud.management.portal.admin.sysmanage.action.DeptAction" scope="prototype">
+    <property name="deptService" ref="deptService" />
+  </bean>
+ <bean id="deptService" class="com.skycloud.management.portal.admin.sysmanage.service.impl.DeptManageServiceImpl">
+    <property name="deptDao" ref="deptDao" />
+    <property name="deptPoolDao" ref="deptPoolDao" />
+    <property name="resourcePoolsService" ref="resourcePoolsService" />
+  </bean>
+  <bean id="deptDao" class="com.skycloud.management.portal.admin.sysmanage.dao.impl.DeptManageDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <bean id="deptPoolDao" class="com.skycloud.management.portal.admin.sysmanage.dao.impl.DeptPoolDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+<!--    update userPwd  -->
+  <bean id="portalUserAction" class="com.skycloud.management.portal.front.user.action.PortalUserAction">
+    <property name="userService" ref="userService" />
+  </bean>
+  
+  <bean id="userAsyncService" class="com.skycloud.management.portal.admin.sysmanage.service.impl.UserAsyncServiceImpl">
+    <property name="userDao" ref="userDao" />    
+    <property name="commandService" ref="commandService" />
+    <property name="roleService" ref="roleService" />
+    <property name="resourcePoolsDao" ref="resourcePoolsDao" />
+  </bean>
+  
+  <!--  vlan Maintain -->
+  <bean id="userVlanAction" class="com.skycloud.management.portal.admin.sysmanage.action.UserVlanAction" scope="prototype">
+    <property name="userVlanService" ref="userVlanService" />
+  </bean>
+ <bean id="userVlanService" class="com.skycloud.management.portal.admin.sysmanage.service.impl.UserVlanServiceImpl">
+    <property name="userVlanDao" ref="userVlanDao" />
+    <property name="nicsDao" ref="nicsDao" />
+    <property name="cloudAPIService" ref="cloudAPIService" />
+    <!-- <property name="HLJVpnInstanceDao" ref="HLJVpnInstanceDao" /> -->
+    <property name="instanceInfoDao" ref="instanceInfoDao"/>
+    <property name="perDao" ref="perDao" />
+    
+  </bean>
+  <bean id="userVlanDao" class="com.skycloud.management.portal.admin.sysmanage.dao.impl.UserVlanDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  
+</beans>
+

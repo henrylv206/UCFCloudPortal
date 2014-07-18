@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+  <!-- 配置了系列常量 -->
+  <constant name="struts.devMode" value="true" />
+  <constant name="struts.i18n.encoding" value="utf-8" />
+  <!--  文件上传的大小限制为5M-->
+  <constant name="struts.multipart.maxSize" value="5248000" />
+  
+  <include file="struts-default.xml" />
+  
+  <package name="default" extends="struts-default,json-default">
+    <interceptors>      
+      <interceptor-stack name="SkyFormOpt">
+	      <interceptor-ref name="defaultStack" />      
+	      <interceptor-ref name="json" />
+      </interceptor-stack>
+    </interceptors>
+    
+    <global-results>
+      <result name="index">/login.jsp</result><!-- 首页 -->
+    </global-results>
+    
+    <global-exception-mappings>
+      <exception-mapping result="all" exception="java.lang.Exception">
+      </exception-mapping>
+    </global-exception-mappings>    
+  </package>
+  
+  <!-- 前台注册专用 -->
+  <package name="default1" extends="struts-default,json-default">
+    <interceptors>      
+      <interceptor-stack name="SkyFormOpt">
+	      <interceptor-ref name="defaultStack" />
+	      <interceptor-ref name="json" />
+      </interceptor-stack>
+    </interceptors>
+    
+    <!-- Set Default Interceptor-->
+    <default-interceptor-ref name="SkyFormOpt" />
+	
+    <global-results>
+      <result name="index">/login.jsp</result><!-- 首页 -->
+    </global-results>
+    
+    <global-exception-mappings>
+      <exception-mapping result="all" exception="java.lang.Exception">
+      </exception-mapping>
+    </global-exception-mappings>    
+  </package>
+  
+  <package name="login" extends="default" >  	
+        
+  </package>
+  
+  <include file="struts/*-struts.xml" />
+  
+</struts>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="sysParameters" namespace="/sysParameters" extends="default">
+		<action name="insertParameter" class="parametersAction" method="parametersAction">
+			<result name="success" type="json">
+			   <param name="root">state</param>
+			</result>
+		</action>		
+		 
+     <!--网卡IP动态获取开关; 1 ： 动态获取IP; 0 : 人工填写IP //to fix bug:0001678	-->
+	  <action name="getNicsDhcpSwitch" class="parametersAction" method="getNicsDhcpSwitch">
+	      <result type="json" name="success">
+	        <param name="root">resultJsonList</param>
+	      </result>
+   	  </action>  		
+	<!--获取带宽使用开关，1:公网IP; 2:用户	-->
+	  <action name="getBWUsedType" class="parametersAction" method="getBWUsedType">
+      <result type="json" name="success">
+        <param name="root">resultJsonList</param>
+      </result>
+    </action> 	
+    
+    <action name="getStorageSizeType" class="parametersAction" method="getStorageSizeType">
+      <result type="json" name="success">
+        <param name="root">resultJsonList</param>
+      </result>
+    </action> 
+		  
+		<action name="queryInstallPackages" class="parametersAction" method="queryInstallPackages">
+    		<result type="json" name="success">
+	    		<param name="root">parameterList</param>
+    		</result>    	
+			<result type="json" name="error">
+				<param name="root">state</param>
+			</result>	
+    	</action> 	
+		  			
+	</package>
+</struts>

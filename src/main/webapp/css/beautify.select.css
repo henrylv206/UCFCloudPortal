@@ -1,0 +1,7 @@
+  /*beautify select box css start*/
+  .selectbox{text-align:left; height:20px; padding-left:4px; line-height:20px; border:none; display:block; cursor:pointer; background:url(../images/bg01.gif) no-repeat right; border-left:1px solid #CCC;  overflow:hidden; border-right:23px;}
+  div.selectbox-wrapper{ border:1px solid #ccc; border-top:1px solid #CCC; margin-top:-2px; position:absolute; text-align:left; background-color:#ffffff;padding:1px 2px;}
+  div.selectbox-wrapper ul li{ padding-left:4px; cursor:pointer; line-height:20px; font-size:12px}
+  div.selectbox-wrapper ul li.selected{background-color:#fdf7ed}
+  div.selectbox-wrapper ul li.hover{color:#fff; background-color:#fcd292}
+  /*---end---*/

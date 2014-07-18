@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <bean id="VMTemplateAction" class="com.skycloud.management.portal.admin.template.action.VMTemplateAction" scope="prototype">
+    <property name="VMTemplateService" ref="VMTemplateService" />
+    <!-- <property name="commandService" ref="commandService" /> -->
+    <property name="cloudAPIService" ref="cloudAPIService" />
+    <!-- <property name="MCTemplateService" ref="MCTemplateService" /> -->
+    <property name="elasterSerivce" ref="elasterSerivce" />
+  </bean>
+   
+  <bean id="VMTemplateService" class="com.skycloud.management.portal.admin.template.service.impl.VMTemplateServiceImpl">
+    <property name="VMTemplateDao" ref="VMTemplateDao" />
+    <property name="parametersDao" ref="parametersDao" />
+    <property name="asyncJobVDCService" ref="asyncJobVDCService" />
+    <property name="productDao" ref="productDao" />
+  </bean>
+  <bean id="MCTemplateService" class="com.skycloud.management.portal.admin.template.service.impl.MCTemplateServiceImpl">
+    <property name="MCTemplateDao" ref="MCTemplateDao" />
+    <property name="parametersDao" ref="parametersDao" />
+    <property name="productDao" ref="productDao" />
+  </bean>
+
+  <bean id="VMTemplateDao" class="com.skycloud.management.portal.admin.template.dao.impl.VMTemplateDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <bean id="MCTemplateDao" class="com.skycloud.management.portal.admin.template.dao.impl.MCTemplateDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+
+  <!-- elaster API -->
+  <bean id="elasterSerivce" class="com.skycloud.management.portal.service.impl.ElasterServiceImpl">
+  	<property name="commandService" ref="commandService" />
+  </bean>
+  
+  
+</beans>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+		
+		<bean id="vmListService" class="com.skycloud.management.portal.front.resources.service.impl.VirtualMachineListServiceImpl">
+				<property name="commandService" ref="commandService" />
+				<property name="vmListDao" ref="vmListDao" />
+		</bean>
+		<bean id="vmListDao" class="com.skycloud.management.portal.front.resources.dao.impl.VirtualMachineListDaoImpl">
+				<property name="commandService" ref="commandService" />
+				<property name="jt" ref="jdbcTemplate" />
+		</bean>
+
+		
+		<bean id="instanceService" class="com.skycloud.management.portal.front.instance.service.impl.InstanceServiceImpl">
+				<property name="instanceInfoDao" ref="instanceInfoDao" />
+				<property name="commandService" ref="commandService" />
+				<property name="instanceInfoRefDao" ref="productInstanceRefDao" />
+				<!-- <property name="publicIpService" ref="publicIpService" /> -->
+				<property name="nicsDao" ref="nicsDao" />
+				<property name="resourcePoolsService" ref="resourcePoolsService" />
+		</bean>
+		<!-- 用户注销、挂起 start -->
+		<bean id="jobInstanceService" class="com.skycloud.management.portal.front.instance.service.impl.JobInstanceInfoServiceImpl">
+				<property name="jobInstanceDao" ref="jobInstanceDao" />
+				<property name="vmModifyService" ref="vmModifyService" />
+				<property name="publicIPService" ref="publicIpInstanceService" />
+				<property name="asyncJobVDCService" ref="asyncJobVDCService" />
+				<property name="bandWidthService" ref="bandWidthInstanceOperateService" />
+				<property name="SGRuleService" ref="SGRuleService" />
+				<property name="instanceService" ref="instanceService" />
+				<property name="backUpInstanceOperateService" ref="backUpInstanceOperateService" />
+				<property name="volumeOperateService" ref="volumeOperateService" />
+				<property name="commandService" ref="commandService" />
+				<property name="orderDao" ref="orderDao" />
+				<property name="asyncJobDao" ref="asyncJobDao" />
+				<property name="serviceInstanceService" ref="serviceInstanceService"></property>
+				<property name="auditDao" ref="auditDao" />
+				<property name="resourcePoolsDao" ref="resourcePoolsDao" />
+		</bean>
+		<bean id="jobInstanceDao" class="com.skycloud.management.portal.front.order.dao.impl.JobInstanceInfoDaoImpl">
+				<property name="jdbcTemplate" ref="jdbcTemplate" />
+				<!-- <property name="interval" value="${job.instance.interval}" /> -->
+		</bean>
+		
+		<bean id="cloudServiceMallDao" class="com.skycloud.management.portal.front.mall.dao.impl.CloudServiceMallDaoImpl">
+				<property name="jdbcTemplate" ref="jdbcTemplate" />
+		</bean>
+		<bean id="vmModifyService" class="com.skycloud.management.portal.front.resources.service.impl.VirtualMachineModifyServiceImpl">
+				<property name="cloudServiceMallDao" ref="cloudServiceMallDao" />
+				<property name="orderDao" ref="orderDao" />
+				<property name="asyncJobDao" ref="asyncJobDao" />
+				<property name="instanceInfoDao" ref="instanceInfoDao" />
+				<property name="commandService" ref="commandService" />
+				<property name="nicsDao" ref="nicsDao" />
+				<property name="auditService" ref="auditService" />
+				<property name="dbUserSnapshotService" ref="dbUserSnapshotService" />
+				<property name="asyncJobVDCService" ref="asyncJobVDCService" />
+				<property name="VMTemplateDao" ref="VMTemplateDao" />
+				<property name="productDao" ref="productDao" />
+				
+				<property name="serviceInstanceService" ref="serviceInstanceService" />
+				<property name="orderService" ref="orderService" />
+				<property name="productInstanceRefService" ref="productInstanceRefService" />
+				
+		</bean>
+
+		<bean id="volumeOperateService" class="com.skycloud.management.portal.front.resources.service.impl.VolumeOperateServiceImpl">
+				<property name="asyncJobDao" ref="asyncJobDao" />
+				<property name="instanceInfoDao" ref="instanceInfoDao" />
+				<property name="orderDao" ref="orderDao" />
+				<property name="auditService" ref="auditService" />
+				<property name="dbUserSnapshotService" ref="dbUserSnapshotService" />
+				<property name="asyncJobVDCService" ref="asyncJobVDCService" />
+				<property name="volumeHistoryDao" ref="volumeHistoryDao" />
+				<property name="commandService" ref="commandService" />
+
+		</bean>
+
+		<bean id="vmTemplateListService" class="com.skycloud.management.portal.front.resources.service.impl.VMTemplateListServiceImpl">
+				<property name="VMTemplateDao" ref="VMTemplateDao" />
+		</bean>
+
+		<bean id="hcTemplateDao" class="com.skycloud.management.portal.front.resources.dao.impl.HCTemplateDaoImpl">
+				<property name="jt" ref="jdbcTemplate" />
+		</bean>
+
+		 
+		<bean id="virtualMachineMonitorService" class="com.skycloud.management.portal.front.resources.service.impl.VirtualMachineMonitorServiceImpl">
+				<property name="virtualMachineMonitorDao" ref="virtualMachineMonitorDao" />
+		</bean>
+
+		<bean id="virtualMachineMonitorDao" class="com.skycloud.management.portal.front.resources.dao.impl.VirtualMachineMonitorDaoImpl">
+		</bean>
+
+		 
+		<bean id="hcMonitorService" class="com.skycloud.management.portal.front.resources.service.impl.HCMonitorServiceImpl">
+				<property name="hcMonitorDao" ref="hcMonitorDao" />
+		</bean>
+
+		<bean id="hcMonitorDao" class="com.skycloud.management.portal.front.resources.dao.impl.HCMonitorDaoImpl">
+		</bean>
+
+		 
+		<bean id="backUpInstanceOperateService" class="com.skycloud.management.portal.front.resources.service.impl.BackUpInstanceOperateServiceImpl">
+				<property name="backUpInstanceOperateDao" ref="resouceServiceInstanceOperateDao" />
+				<property name="instanceInfoDao" ref="instanceInfoDao" />
+				<property name="orderDao" ref="orderDao" />
+				<property name="auditService" ref="auditService" />
+		</bean>
+
+
+
+		<bean id="resouceServiceInstanceOperateDao" class="com.skycloud.management.portal.front.resources.dao.impl.ResouceServiceInstanceOperateDaoImpl">
+				<property name="jt" ref="jdbcTemplate" />
+		</bean>
+
+		 
+		<bean id="monitorService" class="com.skycloud.management.portal.front.resources.service.impl.MonitorInstanceServiceImpl">
+				<property name="resouceServiceInstanceOperateDao" ref="resouceServiceInstanceOperateDao" />
+		</bean>
+		 
+		<bean id="resourcesService" class="com.skycloud.management.portal.front.resources.service.impl.ResourcesServiceImpl">
+				<property name="instanceInfoDao" ref="instanceInfoDao" />
+				<property name="orderDao" ref="orderDao" />
+				<property name="auditService" ref="auditService" />
+				<property name="resourcesDao" ref="resourcesDao" />
+		</bean>
+		<bean id="resourcesDao" class="com.skycloud.management.portal.front.resources.dao.impl.ResourcesDaoImpl">
+				<property name="jt" ref="jdbcTemplate" />
+		</bean>
+		 
+		<bean id="storageMonitorService" class="com.skycloud.management.portal.front.resources.service.impl.StorageMonitorServiceImpl">
+				<property name="vmListDao" ref="vmListDao" />
+		</bean>
+
+		<bean id="syncElasterDelVMState" class="com.skycloud.management.portal.front.task.queue.TaskSyncElasterDelVMState">
+				<property name="vmListDao" ref="vmListDao" />
+				<property name="instanceInfoDao" ref="instanceInfoDao" />
+				<property name="parametersService" ref="parametersService" />
+				<property name="resourcePoolsDao" ref="resourcePoolsDao" />
+		</bean>
+
+		 
+		<bean id="firewallService_portal" class="com.skycloud.management.portal.front.resources.service.impl.FirewallServiceImpl">
+				<property name="firewallDao" ref="firewallDao_portal" />
+				<property name="instanceInfoDao" ref="instanceInfoDao" />
+				<property name="orderDao" ref="orderDao" />
+				<property name="auditService" ref="auditService" />
+				<!-- <property name="publicIPInstanceDao" ref="publicIPInstanceDao" /> -->
+			<!-- 	<property name="hljVpnInstanceDao" ref="HLJVpnInstanceDao" /> -->
+		</bean>
+		<bean id="firewallDao_portal" class="com.skycloud.management.portal.front.resources.dao.impl.FirewallDaoImpl">
+				<property name="jdbcTemplate" ref="jdbcTemplate" />
+		</bean>
+
+		<!-- 2012.2.9 fengyongkai 物理机注入 -->
+		<bean id="physicalMachineService" class="com.skycloud.management.portal.front.resources.service.impl.PhysicalMachineServiceImpl">
+				<property name="resouceServiceInstanceOperateDao" ref="resouceServiceInstanceOperateDao" />
+				<!-- <property name="vmModifyService" ref="vmModifyService" />  -->
+				<property name="physicalHostDao" ref="physicalHostDao" />
+				<property name="orderDao" ref="orderDao" />
+				<property name="instanceInfoDao" ref="instanceInfoDao" />
+				<property name="restfulService" ref="restfulService" />
+		</bean>
+
+		 
+		<!-- 2012.8.30 ninghao 物理机注入HOST物理主机信息DAO -->
+		<bean id="physicalHostDao" class="com.skycloud.management.portal.front.resources.dao.impl.PhysicalHostDaoImpl">
+				<property name="jt" ref="jdbcTemplate" />
+		</bean>
+
+		 
+		<bean id="bandWidthInstanceOperateService" class="com.skycloud.management.portal.front.resources.service.impl.BandWidthInstanceOperateServiceImpl">
+				<property name="bandWidthInstanceOperateDao" ref="resouceServiceInstanceOperateDao" />
+				<property name="instanceInfoDao" ref="instanceInfoDao" />
+				<property name="orderDao" ref="orderDao" />
+				<property name="auditService" ref="auditService" />
+				<property name="asyncJobVDCService" ref="asyncJobVDCService" />
+		</bean>
+
+		<bean id="volumeHistoryDao" class="com.skycloud.management.portal.front.resources.dao.impl.VolumeHistoryDaoImpl">
+				<property name="jdbcTemplate" ref="jdbcTemplate" />
+		</bean>
+
+
+		 
+		<bean id="nasResourceService" class="com.skycloud.management.portal.front.resources.service.impl.NasResourceServiceImpl">
+				<property name="resourceServiceInstanceOperateDao" ref="resouceServiceInstanceOperateDao" />
+				<property name="commandService" ref="commandService" />
+				<property name="pmService" ref="physicalMachineService" />
+				<property name="nicsDao" ref="nicsDao" />
+				<property name="instanceInfoDao" ref="instanceInfoDao" />
+				<property name="orderDao" ref="orderDao" />
+				<property name="auditService" ref="auditService" />
+				<property name="resourcePoolsService" ref="resourcePoolsService" />
+		</bean>
+		
+    
+   <bean id="objectStorageService" class="com.skycloud.management.portal.front.resources.service.impl.ObjectStorageServiceImpl">
+   		<property name="objectStoragedao" ref="objectStorageDao" />
+   		<property name="signature" ref="signature" />
+   </bean>
+   
+   <bean id="objectStorageDao" class="com.skycloud.management.portal.front.resources.dao.impl.ObjectStorageDaoImpl">
+   		<property name="jdbcTemplate" ref="jdbcTemplate" />
+   </bean>
+
+</beans>

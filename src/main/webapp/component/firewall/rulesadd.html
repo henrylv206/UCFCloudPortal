@@ -1,0 +1,120 @@
+<div class="topic">
+    <h4><img src="../images/icons/icon-popup-01.png" />防火墙增加规则</h4>
+  </div>
+  <div class="cont" style="padding:0px 10px 5px;">
+    <table class="poopupTbl">
+      <tbody>
+      <tr>
+      <td class="name">流向：</td>
+      <td>
+        <input name="fw_rule_radio_direction" id="fw_rule_radio_dir_in" type="radio" onclick="fwmanage.directionControl('in')" />流入
+        &nbsp;
+        <input name="fw_rule_radio_direction" id="fw_rule_radio_dir_out" type="radio" onclick="fwmanage.directionControl('out')" />流出
+      </td>
+    </tr>
+        <tr>
+        	<td colspan="2"><strong>源IP地址</strong></td>
+        </tr>
+        <tr>
+          <td class="name"><input name="fw_rule_radio_s" id="fw_rule_radio_s_new" type="radio" onclick="fwmanage.radioControl('s', 'new')"/>新建IP地址：</td>
+          <td><a class="Txtle wid1" style="margin-right:0px;"><input type="text" id="fw_rule_ip_s_h" disabled="true" class="Txtri line11" value=""/></a>
+          <span style="float:left;margin:0px 3px;line-height:22px;">/</span>
+          <a class="Txtle"><input type="text" class="Txtri line11" id="fw_rule_ip_s_t" disabled="true"/></a></td>
+        </tr>
+        <tr>          	
+          <td class="name"><input name="fw_rule_radio_s" id="fw_rule_radio_s_old" type="radio" onclick="fwmanage.radioControl('s', 'old')" />&nbsp;&nbsp;源IP地址：</td>
+          <td>
+          <textarea class="line4_1" id="selected_ip_s" readonly="readonly"></textarea>
+          <!-- bug 0003798 -->
+          <!-- <select id="fw_rule_ip_s" class="Txtle line104" disabled="true" onchange="fwmanage.selChange('s');"></select> -->
+          <input class="morechoice" type="button" value="请选择" id="fw_rule_ip_s_mul" disabled="true" onclick="fwmanage.mulControl('s');" /></td>
+        </tr>
+        <tr>
+          <td class="name">源端口号：</td>
+          <td><a class="Txtle"><input type="text" class="Txtri line11" value="" id="fw_rule_port_s"/></a></td>
+        </tr>
+        <tr>
+        	<td colspan="2"><strong>目的IP地址</strong></td>
+        </tr>
+        <tr>
+          <td class="name"><input name="fw_rule_radio_d" id="fw_rule_radio_d_new" type="radio" onclick="fwmanage.radioControl('d', 'new')"/>新建IP地址：</td>
+          <td><a class="Txtle wid1" style="margin-right:0px;"><input type="text" class="Txtri line11" id="fw_rule_ip_d_h" disabled="true" /></a>
+          <span style="float:left;margin:0px 3px;line-height:22px;">/</span><a class="Txtle">
+          <input type="text" class="Txtri line11" id="fw_rule_ip_d_t" disabled="true"/></a></td>
+        </tr>
+        <tr>
+          <td class="name"><input name="fw_rule_radio_d" id="fw_rule_radio_d_old" type="radio" onclick="fwmanage.radioControl('d', 'old')"/>&nbsp;&nbsp;目的地址：</td>
+          <td>
+          <textarea class="line4_1" id="selected_ip_d" readonly="readonly"></textarea>
+          <!-- bug 0003798 -->
+          <!-- <select id="fw_rule_ip_d" class="Txtle line104" disabled="true" onchange="fwmanage.selChange('d');"></select> -->
+          <input class="morechoice" type="button" value="请选择" id="fw_rule_ip_d_mul" disabled="true" onclick="fwmanage.mulControl('d')"/></td>
+        </tr>
+        <tr>
+          <td class="name">目的端口号：</td>
+          <td><a class="Txtle"><input type="text" class="Txtri line11" value="" id="fw_rule_port_d"/></a></td>
+        </tr>
+        <tr>
+          <td class="name">协议类型：</td>
+          <td>
+          	<select id="fw_protocol" class="Txtle line104" onchange="fwmanage.selChange('protocol');">
+	          <option value="tcp">TCP</option>
+	          <option value="udp">UDP</option>
+	        </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="name">访问权限：</td>
+          <td>
+          	<select id="fw_access" class="Txtle line104">
+	          <option value="1" selected="selected">允许</option>
+	          <option value="0">拒绝</option>
+	        </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:center;"><span class="red">*</span>IP地址通配符需要配置为反掩码方式</td><!-- bug 0003813 -->
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:center;"><span class="red">*</span>端口号如果输入0或空着，表示任意端口号</td><!-- bug 0003813 -->
+        </tr>
+      </tbody>
+    </table>
+    <div class="shopArea2">
+      <input type="button" value="确认" class="popupBtn02" id="fw_button_add" class="popwindow_btn" onclick="fwmanage.fwAddConfirm()"/>
+      <input type="button" value="取消" class="popupBtn02" id="close" />
+    </div><!-- bug 0003662 -->
+	<div class="popupDiv1" id="mul_confirm" style="z-index:999; position:absolute; display:none; top:175px; left:130px;">
+	  <table width="300px" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #CCC; background:#eee;">
+	    <tr>
+	      <td align="center" height="22px;">已选项</td>
+	      <td></td>
+	      <td align="center" height="22px;">可选项</td>
+	    </tr>
+	    <tr>
+	      <td width="45%" bgcolor="#eeeeee" align="center">
+	        <select multiple size="6" style="width:90%" id="fw_mul_choose"></select>
+	      </td>
+	      <td width="10%" align="center" >
+	        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td height="30" align="center"><input type="button" value="&lt;&lt;" onclick="fwmanage.mulMove(-1);" /></td>
+	          </tr>
+	          <tr>
+	            <td height="30" align="center"><input type="button" value="&gt;&gt;" onclick="fwmanage.mulMove(1);" /></td>
+	          </tr>
+	        </table>
+	      </td>
+	      <td width="45%" bgcolor="#eeeeee" align="center">
+	        <select multiple size="6" style="width:90%" id="fw_mul_choice"></select>
+	      </td>
+	    </tr>
+	    <tr>
+	      <td height="30" bgcolor="#eeeeee" align="center" colspan="3">
+	        <input type="button" value="确定" onclick="fwmanage.mulSubmit();" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="取消" onclick="fwmanage.mulCancel();" />
+	        <input type="hidden" id="fw_mul_target" />
+	      </td>
+	    </tr>
+	  </table>
+	</div>
+  </div>

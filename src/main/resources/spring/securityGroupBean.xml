@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <bean id="SGRuleDao" class="com.skycloud.management.portal.front.sg.dao.impl.SGRuleDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  
+  <bean id="SGCustomServiceDao" class="com.skycloud.management.portal.front.sg.dao.impl.SGCustomServiceDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <bean id="deviceInfoDao" class="com.skycloud.management.portal.front.sg.dao.impl.DeviceInfoDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <bean id="SGRuleService" class="com.skycloud.management.portal.front.sg.service.impl.SGRuleServiceImpl">
+    <property name="SGRuleDao" ref="SGRuleDao" />
+    <!-- <property name="H3CIPDao" ref="H3CIPDao" /> -->
+    <property name="SGCustomServiceDao" ref="SGCustomServiceDao" />
+    <property name="deviceInfoDao" ref="deviceInfoDao" />
+    <property name="asyncJobVDCService" ref="asyncJobVDCService" />
+    <property name="instanceService" ref="instanceService" />
+    <!-- <property name="h3cLoginService" ref="h3cLoginService" /> -->
+    <!-- <property name="h3cFirewllService" ref="h3cFirewllService" /> -->
+    <!-- <property name="h3cCustomService" ref="h3cCustomService" /> -->
+    <!-- <property name="HLJVirtualFirewallDao" ref="HLJVirtualFirewallDao" /> -->
+    <property name="publicIPDao" ref="publicIPDao" />
+    <!-- <property name="apiLogDao" ref="apiLogDao" /> -->
+    <!-- <property name="h3cSysManageService" ref="h3cSysManageService" /> -->
+  </bean>
+</beans>

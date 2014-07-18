@@ -1,0 +1,56 @@
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
+    <input type="hidden"  name="basePath" id="basePath"  value="<%=request.getContextPath()%>"/>
+    <div class="breadcrumbs">
+    <div id="navback" ></div>
+        <!-- to fix bug:3351 3400-->
+            <input id="hideOsBtn" class="back" type="button" value="返回上一页" style="float:right" style="display:none"/>
+            <a href="../jsp/order_list.jsp"><span>我的订单</span></a>&nbsp;>&nbsp;
+            <span id="nav" ></span>&nbsp;>&nbsp;
+            <span id="sn"></span>
+            </div>
+    <div class="tblWrap" id="resourceArea">
+    <input type="hidden"  name="serviceId" id="serviceId"  />
+    <input type="hidden"  name="serviceName" id="serviceName"  />
+      <table class="listTbl">
+        <thead>
+          <tr>
+            <th width='5%' class="number">编号</th>
+            <th width='10%'>资源名称</th>
+            <th width='25%'>配置明细</th>
+            <th width='10%'>资源类型</th>
+            <th width='20%'>资源描述</th>
+            <th width='10%'>资源依赖</th>   
+            <th width='10%'>创建时间</th>
+            <th width='10%'>资源状态</th>
+<!--  to fix bug :4012  4014        <th class="shop last">操作</th>-->
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td colspan="10">
+                <input type="hidden" id="curPage" value="1" />
+                <input type="hidden" id="pageSize" value="10" />
+                <input type="hidden" id="total" value="1" />
+              <ul class="paging">
+                <li>
+                    <a href="#"><img src="../images/icons/icon-p-first.gif"  onclick="turnPage(-1, 0)" /></a>
+                    <a href="#"><img src="../images/icons/icon-p-prev.gif"   onclick="turnPage(-1, 1)" /></a>
+                    <span id="pageInfo"></span>
+                    <a href="#"><img src="../images/icons/icon-p-next.gif"   onclick="turnPage(1, 1)" /></a>
+                    <a href="#"><img src="../images/icons/icon-p-last.gif"   onclick="turnPage(1, 0)" /></a>
+                </li>
+                <li>
+                    第<input type="text" id="page_specified" class="text" />页
+                    <input type="button" value="GO" class="but"  onclick="turnSpecified()"/>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tfoot>
+        <tbody id="resource_tbody">
+        </tbody>
+      </table>
+    </div>
+    <div class="tblWrap" id="monitorArea"></div>
+    <!--end tblWrap-->

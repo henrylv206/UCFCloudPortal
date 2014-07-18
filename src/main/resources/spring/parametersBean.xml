@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <bean id="parametersDao" class="com.skycloud.management.portal.admin.parameters.dao.impl.SysParametersDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <bean id="parametersService" class="com.skycloud.management.portal.admin.parameters.service.impl.SysParametersServiceImpl">
+    <property name="parametersDao" ref="parametersDao" />
+  </bean>
+  <bean id="parametersAction" class="com.skycloud.management.portal.admin.parameters.action.SysParametersAction">
+    <property name="parametersService" ref="parametersService" />
+  </bean>
+</beans>

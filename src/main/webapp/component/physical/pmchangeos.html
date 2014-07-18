@@ -1,0 +1,35 @@
+<div class="topic">
+    <h4><img src="../images/icons/icon-popup-01.png" />申请修改操作系统</h4>
+  </div>
+  <div class="cont" style="padding:0px 10px 5px;">
+  <table align="center" >
+    <tr id="os_type" >
+      <td width="75px" align="right"><span>原物理机信息：</span></td>
+      <td id="old_os_type">
+      </td>
+    </tr>
+    <tr id="os_type" >
+      <td width="75px" align="right"><span>新操作系统：</span></td>
+      <td>
+        <select class="select3" id="new_os_type" style="width: 200px;"></select>
+      </td>
+    </tr>
+    <tr>
+      <td align="right"><span>申请理由：</span></td>
+      <td>
+        <textarea id="apply_reason" style=" height:60px; font-size:12px;margin-right:10px;margin-top:10px;"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2 align="center" height="30" >
+        <input type="hidden" id="pmId" />
+        <input type="hidden" id="pminstanceId" />
+      </td>
+    </tr>
+  </table>
+  <div class="shopArea2">
+      <input type="button" value="确认" class="popupBtn02"  class="popwindow_btn" onclick="pmmanage.confirmChangeOS();"/>
+      <input type="button" value="取消" class="popupBtn02" id="close" />
+    </div>
+  
+  </div>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+
+  <display-name>Archetype Created Web Application</display-name>
+  <context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>ucfcloud</param-value>
+  </context-param>
+  <!-- spring config -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring/applicationContext.xml</param-value>
+  </context-param>
+  <!-- log4j config <context-param> <param-name>log4jConfigLocation</param-name> <param-value>classpath:log4j.xml</param-value> 
+  </context-param> <context-param> <param-name>log4jRefreshInterval</param-name> <param-value>1000</param-value> </context-param> -->
+
+  <filter>
+    <filter-name>userLoginFilter</filter-name>
+    <filter-class>com.skycloud.management.portal.common.utils.UserLoginFilter</filter-class>
+    <init-param>
+      <param-name>ignore</param-name>
+      <param-value>
+      	dynCodeTimout.action,getDynCode.action, loginByDyn.action,
+        getCloudInfo.action,vdcfwProductList.action,getProList.action,findMyWanIp.action,
+        vdcbkTemplateList.action,showVmProList.action,searchAllPublicIPProduct.action,
+        vdcbkProductList.action,login.jsp,logout1.jsp,welcome.jsp,sidebar.jsp,login.action,
+        loginInit.action,logout.action,getMenuHtml.action,getSessioninfo.action,verifyCode.action,
+        find_all.action,register.action,getPorLost.action,getBandWidthProductList.action,
+        getStorageProductList.action,getDiskProductList.action,checkAccoutIsExist.action,
+        findPazz.action,frontLogout.action,getSwitchInfo.action,login2.action,loginFor4A.action,
+        getMCProduct.action,getMCTemplateById.action,vdcfwProductList.action,vdcfwTemplateList.action,
+        getLoadBalanceList.action,PortalOrder_findAllTemplateEBS.action,PortalOrder_findAllTemplateDISK.action,
+        getMVMProduct.action,getObjectStorageList.action,log.action,stopUserService.action,activeUser.action,
+        checkEmailIsExist.action,index.jsp,showCommendProduct.action,showNewProduct.action,cloudmall.jsp,
+        register.jsp,registerSelfcare.action,register_ok.jsp,register_failed.jsp,getProductBuyCountById.action,cloud_mall.jsp,
+        mallthirdlist.jsp,mallsecondlist.jsp,shoppingcart.jsp,showCommendService.action,showServiceMall.action,
+        loadFrontAllItems.action,listTemplateType.action,getConfigParams.action,showLeftService.action,
+        showItemServices.action,service_overview.jsp,help.jsp,contact.jsp,register_clause.jsp,register_service.jsp
+        ,register_active.jsp,queryInstallPackages.action,opinionInput.jsp,queryAllCommentCategory.action,addOpinion.action
+      </param-value>
+    </init-param>
+    <init-param>
+      <param-name>portal</param-name>
+      <param-value>
+        template,customerAdmin,order,portal,frontProductItem,vdc_fwmanage,vdc_bkmanage,portal_dbu,product,
+        publicIp,resourcesUsed,cookie,portal_lb,portal_mo,miniComputer,subaccount,UCFCloudPortal
+      </param-value>
+    </init-param>
+    <init-param>
+      <param-name>redirect</param-name>
+      <param-value>/jsp/login.jsp</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>userLoginFilter</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>userLoginFilter</filter-name>
+    <url-pattern>*.action</url-pattern>
+  </filter-mapping>
+ 
+  <!-- Struts 2 Filters -->
+  <filter>
+    <filter-name>struts-cleanup</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
+  </filter>
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts-cleanup</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>*.action</url-pattern>
+  </filter-mapping>
+
+  <!-- Listeners -->
+  <!-- 使用ContextLoaderListener初始化Spring容器 -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!-- Log4J Listener -->
+  <listener>
+    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
+  <!-- Spring 刷新Introspector防止内存泄露 -->
+  <listener>
+    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.skycloud.management.portal.common.utils.BeanFactoryUtil</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.skycloud.management.portal.common.utils.ParameterLoadListener</listener-class>
+  </listener>
+
+  <!--************* 验证码 servlet开始************* -->
+  <servlet>
+    <servlet-name>gernerateCodeServlet</servlet-name>
+    <servlet-class>com.skycloud.management.portal.front.customer.action.GernerateCodeServlet</servlet-class>
+    <init-param>
+      <param-name>width</param-name>
+      <param-value>80</param-value>
+    </init-param>
+    <init-param>
+      <param-name>height</param-name>
+      <param-value>22</param-value>
+    </init-param>
+    <init-param>
+      <param-name>codeCount</param-name>
+      <param-value>4</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>gernerateCodeServlet</servlet-name>
+    <url-pattern>/gernerateCodeServlet</url-pattern>
+  </servlet-mapping>
+  <!--************* 验证码 servlet结束************* -->
+  
+  <!-- 设置短的超时时间为了提高在线用户的命中率，如果20分钟没有动作，认为该用户不在线 -->
+  <session-config>
+    <session-timeout>20</session-timeout>
+  </session-config>
+ <!-- copy from Tezz start -->  
+  <filter>
+		<filter-name>SetCharacterEncoding</filter-name>
+		<filter-class>com.tonbeller.wcf.charset.CharsetFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>SetCharacterEncoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<welcome-file-list>
+	    <welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+    <jsp-config>
+      <taglib>
+        <taglib-uri>/WEB-INF/parameter/parameter-tags.tld</taglib-uri>
+        <taglib-location>/WEB-INF/parameter/parameter-tags.tld</taglib-location>
+      </taglib>     
+    </jsp-config>
+	
+</web-app>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	
+	<!--service -->
+	<bean id="publicIpInstanceService"
+		class="com.skycloud.management.portal.front.resources.service.impl.PublicIPInstanceServiceImpl">
+		<property name="publicIPDao" ref="publicIPDao" />
+		<!-- <property name="publicIPInstanceDao" ref="publicIPInstanceDao" /> -->
+		<property name="instanceInfoDao" ref="instanceInfoDao" />
+		<property name="orderDao" ref="orderDao" />
+		<property name="auditService" ref="auditService" />
+		<property name="VMTemplateDao" ref="VMTemplateDao" />
+		<property name="instanceService" ref="instanceService" />
+		<property name="asyncJobVDCService" ref="asyncJobVDCService" />
+	</bean>
+	
+</beans>

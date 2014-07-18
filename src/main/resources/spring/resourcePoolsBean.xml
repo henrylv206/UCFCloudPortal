@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <!--dao  -->
+    <bean id="resourcePoolsDao"
+		class="com.skycloud.management.portal.admin.sysmanage.dao.impl.ResourcePoolsDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+   </bean>
+  <!--service  -->
+  <bean id="resourcePoolsService" class="com.skycloud.management.portal.admin.sysmanage.service.impl.ResourcePoolsServiceImpl">
+	<property name="resourcePoolsDao" ref="resourcePoolsDao" />
+  </bean>
+  
+  <!--action  -->
+  <bean id="resourcePoolsAction" class="com.skycloud.management.portal.admin.sysmanage.action.ResourcePoolsAction" scope="prototype">
+    <property name="resourcePoolsService" ref="resourcePoolsService" />
+  </bean>
+  
+  <bean id="resourcePoolStatusDao"
+    class="com.skycloud.management.update.portal.admin.resmanage.dao.ResourcePoolStatusDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <bean id="resourcePoolStatusService" class="com.skycloud.management.update.portal.admin.resmanage.service.ResourcePoolStatusServiceImpl">
+    <property name="resPoolStatusDao" ref="resourcePoolStatusDao" />
+  </bean>
+  
+</beans>

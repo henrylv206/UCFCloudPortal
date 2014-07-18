@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <!--云商城： 云商城服务 -->
+  <bean id="cloudServiceMallDao" class="com.skycloud.management.portal.front.mall.dao.impl.CloudServiceMallDaoImpl">
+	<property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <bean id="cloudServiceMallService" class="com.skycloud.management.portal.front.mall.service.impl.CloudServiceMallServiceImpl">
+    <property name="dao" ref="cloudServiceMallDao" />
+    <property name="productDao" ref="productDao" />
+    <property name="productTemplateRelationDao" ref="productTemplateRelationDao" />
+    <property name="VMTemplateDao" ref="VMTemplateDao" />
+	<property name="instanceInfoDao" ref="instanceInfoDao" />
+	<!-- <property name="publicIpInstanceService" ref="publicIpInstanceService" /> -->
+	<!-- <property name="virtualServiceService" ref="virtualServiceService" /> -->
+    <property name="dataBackUpService" ref="dataBackUpService" />
+	<property name="orderDao" ref="orderDao" />
+    <property name="cloudAPIService" ref="cloudAPIService" />
+    <property name="physicalMachineService" ref="physicalMachineService" />
+  </bean>
+  <bean id="cloudServiceMallAction" class="com.skycloud.management.portal.front.mall.action.CloudServiceMallAction" scope="prototype">
+    <property name="service" ref="cloudServiceMallService" />
+    <!-- <property name="serviceInstanceService" ref="serviceInstanceService" /> -->
+    <property name="elasterSerivce" ref="elasterSerivce" />
+    <property name="parametersService" ref="parametersService" />
+    <!-- <property name="resourcePoolsService" ref="resourcePoolsService" /> -->
+    <property name="dbAsycnJobService" ref="dbAsycnJobService" />
+  </bean>
+</beans>

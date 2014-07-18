@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="auditDao"
+		class="com.skycloud.management.portal.admin.audit.dao.impl.AuditDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+	<bean id="sendInfoDao"
+		class="com.skycloud.management.portal.admin.audit.dao.impl.SendInfoDaoImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<!-- <property name="meipJdbcTemplate" ref="meipJdbcTemplate" /> -->
+	</bean>
+
+	<bean id="auditService"
+		class="com.skycloud.management.portal.admin.audit.sevice.impl.AuditSeviceImpl">
+		<property name="auditDao" ref="auditDao" />
+		<property name="sendInfoDao" ref="sendInfoDao" />
+		<property name="cloudAPIService" ref="cloudAPIService" />
+		<property name="orderService" ref="orderService" />
+		<property name="asyncJobVDCService" ref="asyncJobVDCService"></property>
+		<property name="instanceInfoDao" ref="instanceInfoDao"></property>
+		<property name="sysParametersDao" ref="parametersDao"></property>
+		<!-- <property name="loadBalanceH3CServiceImpl" ref="loadbalanceH3Cservice"></property> -->
+		<property name="vmTemplateService" ref="VMTemplateService"></property>
+		<property name="mcTemplateService" ref="MCTemplateService"></property>
+		<property name="nicsService" ref="nicsService"></property>
+		<property name="serviceInstanceService" ref="serviceInstanceService"></property>
+		<property name="deptService" ref="deptService"></property>
+        <property name="physicalMachineService" ref="physicalMachineService"></property>
+        <property name="userVlanService" ref="userVlanService"></property>
+        <property name="productInstanceRefService" ref="productInstanceRefService" />
+	</bean>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	</bean>
+	<bean id="mailSend"
+		class="com.skycloud.management.portal.admin.audit.sevice.impl.SendMailImpl">
+		<property name="mailSender" ref="mailSender"></property>
+		<property name="sendInfoDao" ref="sendInfoDao" />
+		<property name="userDao" ref="userDao" />
+		<!--fix bug 0002495 -->
+		<property name="orderDao" ref="orderDao" />
+	</bean>
+	<!-- email send -->
+
+
+</beans>

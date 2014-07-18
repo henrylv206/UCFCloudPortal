@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+  <bean id="serviceInstanceDao" class="com.skycloud.management.portal.front.order.dao.impl.ServiceInstanceDaoImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  
+  <bean id="serviceInstanceService" class="com.skycloud.management.portal.front.order.service.impl.ServiceInstanceServiceImpl">
+    <property name="serviceInstanceDao" ref="serviceInstanceDao" />
+    <property name="instanceInfoDao" ref="instanceInfoDao" />
+    <property name="orderDao" ref="orderDao" />
+  </bean>
+</beans>
