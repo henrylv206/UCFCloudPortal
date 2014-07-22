@@ -7,7 +7,7 @@ var submitorder = {
 	
 		$.ajaxSetup({cache:false}); 
 		
-		var cloudInfo = 0;
+		/*var cloudInfo = 0;
 		$.ajax({
 			url: submitorder.root+"/sysParameters/getCloudInfo.action",
 			type: 'POST',
@@ -16,7 +16,7 @@ var submitorder = {
 			success: function(data) {
 				cloudInfo = data;
 			}
-		});
+		});*/
 
 		main.carstate = true;
 		main.totalcharge = new Array();
@@ -28,7 +28,7 @@ var submitorder = {
 			var total = 0;
 			
 			for ( var i = 0; i < p.vminfos.length; i++) {				 
-				var dom_final = this.domFactory(p.vminfos[i],cloudInfo);	
+				var dom_final = this.domFactory(p.vminfos[i]/*,cloudInfo*/);	
  
 				$("#submitorderHtml").append(dom_final);	
 				//to fix bug [3321]
@@ -111,26 +111,26 @@ var submitorder = {
 			$(this).removeClass().addClass("btn_edit");
 		});
 		//shopcart.PublicPrivateSwitch();
-		if(cloudInfo == '2'){
+		//if(cloudInfo == '2'){
 		    $(".shopcart .trytab #shopcartTatolMoney").html('');
 		    $(".shopcart .trytab #shopcartTatol").html('');	
 		    $(".shopcart .trytab #shopcartTDPrice").html('');	
 		    
-			$("#submitOrderTop").hide();
+			/*$("#submitOrderTop").hide();
 			$(".mysearch").hide();
 			$(".nav").hide();
 			$(".footer").hide();
 			$(".active01").hide();
-			$(".active02").hide();
+			$(".active02").hide();*/
 			$("#serviceMenu").show();
 			$("#submitorder1").hide();
 			$("#submitorder2").hide();
 			$("#submitPay").hide();
-	    }
+	   // }
 	},
 	
 	//初始化时，创建购物车DOM页面
-	domFactory : function(vminfo,cloudInfo) {
+	domFactory : function(vminfo/*,cloudInfo*/) {
 		var id = vminfo.productId;
 		var dom = '';
 		 
@@ -198,7 +198,7 @@ var submitorder = {
 		}else if (vminfo.templateType == 13) {
 			serviceType = "NAS文件系统";
 		}
-		if(cloudInfo == "1"){
+		/*if(cloudInfo == "1"){
 			//to fix bug [7730]
 			if(vminfo.unit == 'Y') {                    	    			
 				unit = '年';
@@ -224,10 +224,10 @@ var submitorder = {
 		         +'	 <td>'+vminfo.period+unit+'</td>'    		    		
 		         +'	 <td class="last">￥'+(vminfo.period * vminfo.charge).toFixed(2) + '元</td>'    		
 		         +'</tr>';
-		}
+		}*/
 		
 		var unit = "";
-		if(cloudInfo == "2"){
+		//if(cloudInfo == "2"){
 			//to fix bug [7462]
 			if(vminfo.unit == 'Y') {                    	    			
 				unit = '年';
@@ -251,7 +251,7 @@ var submitorder = {
 		         +'	 <td>'+resourceNum+'</td>'    				     				 		
 		         +'	 <td>'+vminfo.period+unit+'</td>'    		    		
 		         +'</tr>';
-		}
+		//}
 		return dom;
 	},
 	
@@ -264,7 +264,7 @@ var submitorder = {
 	},	
 	
 	PublicPrivateSwitch : function() {			 
-		var cloudInfo = 0;
+		/*var cloudInfo = 0;
 		$.ajax({
 			url: "/UCFCloudPortal/sysParameters/getCloudInfo.action",
 			type: 'POST',
@@ -274,10 +274,10 @@ var submitorder = {
 				cloudInfo = data;
 			}
 		});
-		if(cloudInfo == '2'){
+		if(cloudInfo == '2'){*/
 		    $(".shopcart .trytab #shopcartTatolMoney").html('');
 		    $(".shopcart .trytab #shopcartTatol").html('');			  
-	    }
+	    //}
     },	
     
     getProductBuyCountById:function (id){
@@ -653,16 +653,16 @@ var multiVM ={
 			  		return flag;
 		    },
     setVlanPoorMessage:function(){
-    	var strCloud  = "1";
+    	/*var strCloud  = "1";
     	$.getScript(submitorder.root+"/js/privateSkySwitch.js", function(e){
         	strCloud = privateSkySwitch.getCloudInfo();        	
         });
     	if(strCloud == "1"){
     		return "对不起，由于VLAN资源不足，你的虚拟机无法成功申请，请联系客服。";
     	} 
-    	if(strCloud == "2"){
+    	if(strCloud == "2"){*/
     		return "对不起，由于VLAN资源不足，你的虚拟机无法成功申请，请联系管理员。";
-    	}
+    	//}
     }	    
 };
 var bw = {
