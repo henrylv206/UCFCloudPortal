@@ -56,7 +56,7 @@
       <property name="jobInstanceInfoService" ref="jobInstanceService" />
       <property name="productService" ref="productService" />
        <property name="nicsService" ref="nicsService" />
-       <property name="serviceInstanceService" ref="serviceInstanceService" />  
+       <!-- <property name="serviceInstanceService" ref="serviceInstanceService" />   -->
        <property name="physicalMachineService" ref="physicalMachineService" />    
        <property name="firewallService" ref="firewallService_portal" />
        <!-- <property name="loadbalanceH3Cservice" ref="loadbalanceH3Cservice" />   -->

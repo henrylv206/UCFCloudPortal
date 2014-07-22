@@ -1,6 +1,6 @@
 //在我的订单中用到
 var order = {
-		cloudStr:0,
+		//cloudStr:0,
 	orderIns :{},
 	reSubIns : new Array(),
 //to fix bug:0003259，0003391
@@ -168,7 +168,7 @@ var order = {
     },
     init: function(){
         var solf = this;   
-        solf.cloudStr = solf.getCloudInfo();
+        /*solf.cloudStr = solf.getCloudInfo();*/
         for (var key in solf.orderState) {
             $(".prorder #orderState").append('<option value="' + key + '">' + solf.orderState[key] + '</option>');
         }
@@ -212,7 +212,7 @@ var order = {
         
     },
     
-	getCloudInfo : function() {
+	/*getCloudInfo : function() {
 		var cloudInfo = 0;
 		$.ajax({
 			url: "/UCFCloudPortal/sysParameters/getCloudInfo.action",
@@ -224,7 +224,7 @@ var order = {
 			}
 		});
 		return cloudInfo;
-	},
+	},*/
     
     queryOrder: function(curPage){
 
@@ -269,7 +269,7 @@ var order = {
             	alert("'开始日期'不能大于'结束日期'");
             	return;
             }
-    		var cloudInfo = 0;
+    		/*var cloudInfo = 0;
     		$.ajax({
     			url: "/UCFCloudPortal/sysParameters/getCloudInfo.action",
     			type: 'POST',
@@ -278,7 +278,7 @@ var order = {
     			success: function(data) {
     				cloudInfo = data;
     			}
-    		});             
+    		});    */         
         $.ajax({
         	url:"/UCFCloudPortal/order/myOrderServiceList.action",
         	type:'GET',
@@ -345,7 +345,7 @@ var order = {
                 	 }
                 	 //to fix bug:3202 3323
                 	 
-                	 if(solf.cloudStr=="1"){
+                	 /*if(solf.cloudStr=="1"){
                 		dom += '<tr '+ trEvents +'>'+
                 		 '<td class="number"><a class="quit" href="order_service.jsp?orderid=' +data.list[i].orderId +'&&ordertype='+data.list[i].type+' ">' +data.list[i].orderId +' </a></td>' +
                 		 '<td>' +usercount +'</td>' +
@@ -361,7 +361,7 @@ var order = {
                 		 '</tr>' ;                		 
                 	 }
                 	 
-                	 if(solf.cloudStr=="2"){
+                	 if(solf.cloudStr=="2"){*/
                  		dom += '<tr '+ trEvents +'>'+
                  		 '<td class="number"><a class="quit" href="order_service.jsp?orderid=' +data.list[i].orderId +'&&ordertype='+data.list[i].type+' ">' +data.list[i].orderId +' </a></td>' +
                  		 '<td>' +usercount +'</td>' +
@@ -374,7 +374,7 @@ var order = {
                  		 '<a href="#"  title="订单取消"><img src="../images/icons/icon-del.png"  name="'+data.list[i].orderId+'" class="bill_btn rejectOrder" /></a>' +
                  		 '</td>' +
                  		 '</tr>' ;                		 
-                 	 }
+                 	 //}
 //                	}
                 	
                 order.orderIns[data.list[i].orderId]=data.list[i];
